@@ -4,6 +4,7 @@ package com.example.finalproject5.Model.Assignment;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.finalproject5.Model.Category.Category;
 import com.example.finalproject5.Model.Course.Course;
 
 import java.util.Date;
@@ -19,7 +20,7 @@ public class Assignment {
     private Date assignedDate;
     private Date dueDate;
     private Course courseID;
-    //will add categoryID
+    private Category categoryID;
 
 
     public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
