@@ -20,5 +20,5 @@ public interface CategoryDao {
     void delete(Category category);
 
     @Query("SELECT * FROM category_table ORDER BY categoryID DESC")
-    List<Category> getAllUsers();
+    List<Category> getAllCategories();
 }
