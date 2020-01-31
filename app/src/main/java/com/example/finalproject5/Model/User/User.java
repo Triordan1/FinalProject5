@@ -2,6 +2,7 @@ package com.example.finalproject5.Model.User;
 
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "user_table")
@@ -22,6 +23,11 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Ignore
+    public User(String username, String password){
+        this.username=username;
+        this.password= password;
+    }
     public void setUserID(int userID) {
         this.userID = userID;
     }

@@ -24,4 +24,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM user_table ORDER BY userID DESC")
     List<User> getAllUsers();
+
+    @Query("select * from user_table where username = :username and password= :password")
+    User login(String username, String password);
 }
