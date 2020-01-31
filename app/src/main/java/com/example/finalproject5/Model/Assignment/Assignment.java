@@ -24,7 +24,7 @@ public class Assignment {
 
 
     public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
-                      Date assignedDate, Date dueDate, Course courseID) {
+                      Date assignedDate, Date dueDate, Course courseID, Category categoryID) {
         this.assignmentID = assignmentID;
         this.details = details;
         this.maxScore = maxScore;
@@ -32,6 +32,7 @@ public class Assignment {
         this.assignedDate = assignedDate;
         this.dueDate = dueDate;
         this.courseID = courseID;
+        this.categoryID = categoryID;
     }
 
     public void setAssignmentID(int assignmentID) {
@@ -64,6 +65,10 @@ public class Assignment {
 
     public Course getCourseID() {
         return courseID;
+    }
+
+    public Category getCategoryID() {
+        return categoryID;
     }
 }
 

@@ -3,6 +3,8 @@ package com.example.finalproject5.Model.Category;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.finalproject5.Model.Grade.Grade;
+
 import java.util.Date;
 
 @Entity(tableName = "category_table")
@@ -13,13 +15,14 @@ public class Category {
     private String title;
     private int weight;
     private Date assignedDate;
-    //will add grade ID
+    private Grade gradeID;
 
 
-    public Category(String title, int weight, Date assignedDate) {
+    public Category(String title, int weight, Date assignedDate, Grade gradeID) {
         this.title = title;
         this.weight = weight;
         this.assignedDate = assignedDate;
+        this.gradeID = gradeID;
     }
 
     public void setCategoryID(int categoryID) {
@@ -40,5 +43,9 @@ public class Category {
 
     public Date getAssignedDate() {
         return assignedDate;
+    }
+
+    public Grade getGradeID() {
+        return gradeID;
     }
 }
