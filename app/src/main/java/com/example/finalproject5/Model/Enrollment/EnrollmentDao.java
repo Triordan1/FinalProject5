@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.List;
 
 @Dao
@@ -19,6 +21,6 @@ public interface EnrollmentDao {
     @Delete
     void delete(Enrollment enrollmentr);
 
-    @Query("SELECT * FROM enrollment_table ORDER BY enrollmentID DESC")
+    @Query("SELECT * FROM " + AppDatabase.ENROLLMENT_TABLE  + " ORDER BY enrollmentID DESC")
     List<Enrollment> getAllClassEnrollments();
 }

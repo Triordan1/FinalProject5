@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.List;
 
 @Dao
@@ -19,7 +21,7 @@ public interface AssignmentDao {
     @Delete
     void delete(Assignment assignment);
 
-    @Query("SELECT * FROM assignment_table ORDER BY assignmentID DESC")
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE  + " ORDER BY assignmentID DESC")
     List<Assignment> getAllAssignments();
 }
 

@@ -4,10 +4,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.Grade.Grade;
+import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
-@Entity(tableName = "category_table")
+@Entity(tableName = AppDatabase.CATEGORY_TABLE)
 public class Category {
     @PrimaryKey(autoGenerate = true)
     private int categoryID;

@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.List;
 
 @Dao
@@ -19,6 +21,6 @@ public interface GradeDao {
     @Delete
     void delete(Grade grade);
 
-    @Query("SELECT * FROM grade_table ORDER BY gradeID DESC")
+    @Query("SELECT * FROM " + AppDatabase.GRADE_TABLE  + " ORDER BY gradeID DESC")
     List<Grade> getAllGrades();
 }

@@ -4,9 +4,11 @@ package com.example.finalproject5.Model.Course;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.Date;
 
-@Entity(tableName = "course_table")
+@Entity(tableName = AppDatabase.COURSE_TABLE)
 public class Course {
     @PrimaryKey(autoGenerate = true)
     private int courseID;

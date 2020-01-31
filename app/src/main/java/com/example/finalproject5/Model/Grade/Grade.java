@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.AppDatabase;
 
-@Entity(tableName = "grade_table")
+@Entity(tableName = AppDatabase.GRADE_TABLE)
 public class Grade {
     @PrimaryKey(autoGenerate = true)
     private int gradeID;

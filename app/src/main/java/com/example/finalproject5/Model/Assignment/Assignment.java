@@ -6,10 +6,11 @@ import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.Category.Category;
 import com.example.finalproject5.Model.Course.Course;
+import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
-@Entity(tableName = "assignment_table")
+@Entity(tableName = AppDatabase.ASSIGNMENT_TABLE)
 public class Assignment {
     @PrimaryKey(autoGenerate = true)
     private int assignmentID;

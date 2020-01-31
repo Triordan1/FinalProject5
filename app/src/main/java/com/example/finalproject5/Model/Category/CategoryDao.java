@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.List;
 
 @Dao
@@ -19,6 +21,6 @@ public interface CategoryDao {
     @Delete
     void delete(Category category);
 
-    @Query("SELECT * FROM category_table ORDER BY categoryID DESC")
+    @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " ORDER BY categoryID DESC")
     List<Category> getAllCategories();
 }

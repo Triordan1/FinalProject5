@@ -5,10 +5,11 @@ import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
-@Entity(tableName = "enrollment_table")
+@Entity(tableName = AppDatabase.ENROLLMENT_TABLE)
 public class Enrollment {
     @PrimaryKey(autoGenerate = true)
     private int enrollmentID;
