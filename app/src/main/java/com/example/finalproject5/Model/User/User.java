@@ -5,7 +5,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user_table")
+import com.example.finalproject5.Model.AppDatabase;
+
+@Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
 
     @PrimaryKey(autoGenerate = true)
