@@ -15,11 +15,11 @@ public class Category {
 
     private String title;
     private int weight;
-    private Date assignedDate;
-    private Grade gradeID;
+    private String assignedDate;
+    private int gradeID;
 
 
-    public Category(String title, int weight, Date assignedDate, Grade gradeID) {
+    public Category(String title, int weight, String assignedDate, int gradeID) {
         this.title = title;
         this.weight = weight;
         this.assignedDate = assignedDate;
@@ -42,11 +42,11 @@ public class Category {
         return weight;
     }
 
-    public Date getAssignedDate() {
+    public String getAssignedDate() {
         return assignedDate;
     }
 
-    public Grade getGradeID() {
+    public int getGradeID() {
         return gradeID;
     }
 }

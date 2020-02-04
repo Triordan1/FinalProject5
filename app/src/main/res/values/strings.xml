@@ -5,4 +5,5 @@
     <string name="login">Login</string>
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
+    <string name="create">Create Account</string>
 </resources>

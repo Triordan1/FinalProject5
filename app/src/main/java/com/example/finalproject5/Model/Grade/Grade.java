@@ -7,6 +7,7 @@ import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.*;
 
 @Entity(tableName = AppDatabase.GRADE_TABLE)
 public class Grade {
@@ -15,12 +16,36 @@ public class Grade {
 
     private double earnedScore;
     private double maxScore;
-    private Assignment assignmentID;
-    private User studentID;
-    private Course courseID;
+    private int assignmentID;
+    private int studentID;
+    private int courseID;
 
-    public Grade(double earnedScore, double maxScore, Assignment assignmentID, User studentID,
-                 Course courseID) {
+    public int getGradeID() {
+        return gradeID;
+    }
+
+    public double getEarnedScore() {
+        return earnedScore;
+    }
+
+    public double getMaxScore() {
+        return maxScore;
+    }
+
+    public int getAssignmentID() {
+        return assignmentID;
+    }
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public Grade(double earnedScore, double maxScore, int assignmentID, int studentID,
+                 int courseID) {
         this.earnedScore = earnedScore;
         this.maxScore = maxScore;
         this.assignmentID = assignmentID;
@@ -40,15 +65,15 @@ public class Grade {
         this.maxScore = maxScore;
     }
 
-    public void setAssignmentID(Assignment assignmentID) {
+    public void setAssignmentID(int assignmentID) {
         this.assignmentID = assignmentID;
     }
 
-    public void setStudentID(User studentID) {
+    public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
 
-    public void setCourseID(Course courseID) {
+    public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
 }

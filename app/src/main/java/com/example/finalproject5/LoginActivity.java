@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
-import com.example.finalproject5.Model.UserDatabase;
+import com.example.finalproject5.Model.AppDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passw= findViewById(R.id.password);
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
-                UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
+                UserDao dao = AppDatabase.getAppDatabase(LoginActivity.this).dao();
                 User user = dao.login(username,password);
                 if (user== null){
                     // user not found
