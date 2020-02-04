@@ -5,5 +5,8 @@
     <string name="login">Login</string>
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
+<<<<<<< HEAD
     <string name="create">Create Account</string>
+=======
+>>>>>>> 34283e7f1328c8dc47394bfb5c7f62432dd7734d
 </resources>
