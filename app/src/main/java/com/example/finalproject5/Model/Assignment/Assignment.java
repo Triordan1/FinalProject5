@@ -18,14 +18,14 @@ public class Assignment {
     private String details;
     private double maxScore;
     private double earnedScore;
-    private Date assignedDate;
-    private Date dueDate;
-    private Course courseID;
-    private Category categoryID;
+    private String assignedDate;
+    private String dueDate;
+    private int courseID;
+    private String categoryID;
 
 
     public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
-                      Date assignedDate, Date dueDate, Course courseID, Category categoryID) {
+                      String assignedDate, String dueDate, int courseID, String categoryID) {
         this.assignmentID = assignmentID;
         this.details = details;
         this.maxScore = maxScore;
@@ -56,19 +56,19 @@ public class Assignment {
         return earnedScore;
     }
 
-    public Date getAssignedDate() {
+    public String getAssignedDate() {
         return assignedDate;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public Course getCourseID() {
+    public int getCourseID() {
         return courseID;
     }
 
-    public Category getCategoryID() {
+    public String getCategoryID() {
         return categoryID;
     }
 }

@@ -14,11 +14,11 @@ public class Enrollment {
     @PrimaryKey(autoGenerate = true)
     private int enrollmentID;
 
-    private User studentID;
-    private Course courseID;
-    private Date enrollmentDate;
+    private int studentID;
+    private int courseID;
+    private String enrollmentDate;
 
-    public Enrollment(User studentID, Course courseID, Date enrollmentDate) {
+    public Enrollment(int studentID, int courseID, String enrollmentDate) {
         this.studentID = studentID;
         this.courseID = courseID;
         this.enrollmentDate = enrollmentDate;
@@ -32,15 +32,15 @@ public class Enrollment {
         return enrollmentID;
     }
 
-    public User getStudentID() {
+    public int getStudentID() {
         return studentID;
     }
 
-    public Course getCourseID() {
+    public int getCourseID() {
         return courseID;
     }
 
-    public Date getEnrollmentDate() {
+    public String getEnrollmentDate() {
         return enrollmentDate;
     }
 }
