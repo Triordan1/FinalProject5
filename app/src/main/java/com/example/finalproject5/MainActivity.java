@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // check database
-        UserDatabase.getUserDatabase(MainActivity.this).loadData(this);
+        //UserDatabase.getUserDatabase(MainActivity.this).loadData(this);
         Button create_account_button = findViewById(R.id.create_account);
         create_account_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Main","onclick for create account called");
-                Intent intent = new Intent(MainActivity.this, createAccount.class);
+                Intent intent = new Intent(MainActivity.this, CreateAccountInfo.class);
                 startActivity(intent);
             }
         });

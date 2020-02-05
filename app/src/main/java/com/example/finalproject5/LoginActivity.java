@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
-import com.example.finalproject5.Model.UserDatabase;
+
+import static com.example.finalproject5.MainActivity.user;
+//import com.example.finalproject5.Model.UserDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
@@ -28,9 +30,9 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passw= findViewById(R.id.password);
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
-                UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
-                User user = dao.login(username,password);
-                if (user== null){
+                //UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
+                //User user = dao.login(username,password);
+                if (user == null){
                     // user not found
                     TextView msg = findViewById(R.id.message);
                     msg.setText("Username or Password is incorrect");
@@ -43,10 +45,8 @@ public class LoginActivity extends AppCompatActivity {
                     });
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
-
+                    //This code is very well maintained, I liked the indentation
                 }
-
             }
         });
     }
