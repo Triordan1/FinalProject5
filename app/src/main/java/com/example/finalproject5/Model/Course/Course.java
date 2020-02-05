@@ -8,9 +8,9 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
-@Entity(tableName = AppDatabase.COURSE_TABLE)
+@Entity(tableName = AppDatabase.COURSE_TABLE) // This will work once the database is changed
 public class Course {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)//this will change back to normal after implementation of the database
     private int courseID;
 
     private String instructor;
