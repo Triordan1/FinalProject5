@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
@@ -22,6 +22,9 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM user_table ORDER BY userID DESC")
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE  + " ORDER BY userID DESC")
     List<User> getAllUsers();
+
+    @Query("select * from " + AppDatabase.USER_TABLE + " where username = :username and password= :password")
+    User login(String username, String password);
 }

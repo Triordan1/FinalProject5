@@ -4,11 +4,13 @@ package com.example.finalproject5.Model.Course;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.finalproject5.Model.AppDatabase;
+
 import java.util.Date;
 
-@Entity(tableName = "course_table")
+@Entity(tableName = AppDatabase.COURSE_TABLE) // This will work once the database is changed
 public class Course {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)//this will change back to normal after implementation of the database
     private int courseID;
 
     private String instructor;
