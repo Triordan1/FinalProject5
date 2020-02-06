@@ -15,6 +15,8 @@ import com.example.finalproject5.View.CourseView;
 
 import java.util.List;
 
+/** This class is the adapter used to display our assignments for each course. */
+
 public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.ViewHolder> {
 
     private Context mContext;

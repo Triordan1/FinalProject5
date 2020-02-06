@@ -9,6 +9,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the enrollment details. */
+
 @Entity(tableName = AppDatabase.ENROLLMENT_TABLE)
 public class Enrollment {
     @PrimaryKey(autoGenerate = true)

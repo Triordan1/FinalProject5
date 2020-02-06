@@ -8,6 +8,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the course details. */
+
 @Entity(tableName = AppDatabase.COURSE_TABLE) // This will work once the database is changed
 public class Course {
     @PrimaryKey(autoGenerate = true)//this will change back to normal after implementation of the database

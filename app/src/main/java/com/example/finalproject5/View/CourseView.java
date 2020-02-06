@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.finalproject5.Controller.CourseViewAdapter;
 import com.example.finalproject5.R;
 
+/** This class is used as the holder for our recycler view and the base of our course view page. */
+
 public class CourseView extends AppCompatActivity {
 
     TextView tvCourseName;

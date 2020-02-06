@@ -22,6 +22,8 @@ import com.example.finalproject5.Model.User.UserDao;
 
 import java.util.List;
 
+/** This class is the database used to access and link each of our tables within the database. */
+
 @Database(entities = {User.class, Course.class, Assignment.class, Category.class, Grade.class,
         Enrollment.class}, version = 2,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {

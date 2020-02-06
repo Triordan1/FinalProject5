@@ -8,6 +8,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the category details. */
+
 @Entity(tableName = AppDatabase.CATEGORY_TABLE)
 public class Category {
     @PrimaryKey(autoGenerate = true)

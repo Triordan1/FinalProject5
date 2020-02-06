@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the assignment details. */
+
 @Entity(tableName = AppDatabase.ASSIGNMENT_TABLE)
 public class Assignment {
     @PrimaryKey(autoGenerate = true)

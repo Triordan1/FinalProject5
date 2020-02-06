@@ -9,6 +9,8 @@ import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.*;
 
+/** This class is the entity used to hold the grade details. */
+
 @Entity(tableName = AppDatabase.GRADE_TABLE)
 public class Grade {
     @PrimaryKey(autoGenerate = true)
