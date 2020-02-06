@@ -14,10 +14,10 @@ public class Course {
     private String instructor;
     private String title;
     private String description;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
 
-    public Course(String instructor, String title, String description, Date startDate, Date endDate) {
+    public Course(String instructor, String title, String description, String startDate, String endDate) {
         this.instructor = instructor;
         this.title = title;
         this.description = description;
@@ -45,11 +45,11 @@ public class Course {
         return description;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
