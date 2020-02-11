@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passw = findViewById(R.id.password);
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
-                //UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
-                //User user = dao.login(username,password);
+               // UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
+              //  User user = dao.login(username,password);
                 if (user == null) {
                     UserDao dao = AppDatabase.getAppDatabase(LoginActivity.this).dao();
                     User user = dao.login(username, password);
@@ -41,7 +41,10 @@ public class LoginActivity extends AppCompatActivity {
                         TextView msg = findViewById(R.id.message);
                         msg.setText("Username or Password is incorrect");
                     } else {
+                        MainActivity.user= username;
+                        //inform user login was a success
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setMessage(R.string.successlogin).setTitle(R.string.login);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {

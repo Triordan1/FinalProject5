@@ -22,10 +22,11 @@ public class Assignment {
     private String dueDate;
     private int courseID;
     private String categoryID;
+    private String username;
 
 
     public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
-                      String assignedDate, String dueDate, int courseID, String categoryID) {
+                      String assignedDate, String dueDate, int courseID, String categoryID, String username) {
         this.assignmentID = assignmentID;
         this.details = details;
         this.maxScore = maxScore;
@@ -34,6 +35,7 @@ public class Assignment {
         this.dueDate = dueDate;
         this.courseID = courseID;
         this.categoryID = categoryID;
+        this.username= username;
     }
 
     public void setAssignmentID(int assignmentID) {
@@ -70,6 +72,42 @@ public class Assignment {
 
     public String getCategoryID() {
         return categoryID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setMaxScore(double maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public void setEarnedScore(double earnedScore) {
+        this.earnedScore = earnedScore;
+    }
+
+    public void setAssignedDate(String assignedDate) {
+        this.assignedDate = assignedDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
+
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
     }
 }
 

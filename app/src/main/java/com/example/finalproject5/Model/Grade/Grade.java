@@ -19,6 +19,7 @@ public class Grade {
     private int assignmentID;
     private int studentID;
     private int courseID;
+    private  String username;
 
     public int getGradeID() {
         return gradeID;
@@ -45,12 +46,13 @@ public class Grade {
     }
 
     public Grade(double earnedScore, double maxScore, int assignmentID, int studentID,
-                 int courseID) {
+                 int courseID, String username) {
         this.earnedScore = earnedScore;
         this.maxScore = maxScore;
         this.assignmentID = assignmentID;
         this.studentID = studentID;
         this.courseID = courseID;
+        this.username = username;
     }
 
     public void setGradeID(int gradeID) {
@@ -75,5 +77,13 @@ public class Grade {
 
     public void setCourseID(int courseID) {
         this.courseID = courseID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
