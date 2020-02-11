@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Create_Class extends AppCompatActivity {
+
     /* DONE : hook up class activity buttons to database */
     Button create;
     Button cancel;
@@ -59,9 +60,17 @@ public class Create_Class extends AppCompatActivity {
             String userProf = cProf.getText().toString();
             String userS = sDate.getText().toString();
             String userE = eDate.getText().toString();
+
+            //For now removed
+
+            /*
             final Course newCourse = new Course(userProf,userN,userNum,userS,userE);
             mCourseDao.insert(newCourse);
+
+             */
         }
+
     }
+
 
 }

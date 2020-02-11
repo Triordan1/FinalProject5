@@ -1,6 +1,7 @@
 package com.example.finalproject5.Model.Course;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,13 +14,26 @@ public class Course {
     @PrimaryKey(autoGenerate = true)//this will change back to normal after implementation of the database
     private int courseID;
 
+    @ColumnInfo(name = "userCol")
+    private String user;
+
+    @ColumnInfo(name = "instructorCol")
     private String instructor;
+
+    @ColumnInfo(name = "titleCol")
     private String title;
+
+    @ColumnInfo(name = "descCol")
     private String description;
+
+    @ColumnInfo(name = "startCol")
     private String startDate;
+
+    @ColumnInfo(name = "endCol")
     private String endDate;
 
-    public Course(String instructor, String title, String description, String startDate, String endDate) {
+    public Course(String user, String instructor, String title, String description, String startDate, String endDate) {
+        this.user = user;
         this.instructor = instructor;
         this.title = title;
         this.description = description;
@@ -33,6 +47,14 @@ public class Course {
 
     public int getCourseID() {
         return courseID;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getInstructor() {

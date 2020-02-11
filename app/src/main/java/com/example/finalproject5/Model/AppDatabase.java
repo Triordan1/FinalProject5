@@ -58,8 +58,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
 
-
-
     public static final String dbName="db-gradechecker";
     public static final String USER_TABLE="user";
     public static final String COURSE_TABLE="course";
