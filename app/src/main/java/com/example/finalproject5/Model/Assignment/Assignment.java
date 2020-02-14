@@ -17,6 +17,7 @@ public class Assignment {
     @PrimaryKey(autoGenerate = true)
     private int assignmentID;
 
+    private String assignmentName;
     private String details;
     private double maxScore;
     private double earnedScore;
@@ -26,9 +27,10 @@ public class Assignment {
     private String categoryID;
 
 
-    public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
+    public Assignment(int assignmentID,  String assignmentName, String details, double maxScore, double earnedScore,
                       String assignedDate, String dueDate, int courseID, String categoryID) {
         this.assignmentID = assignmentID;
+        this.assignmentName = assignmentName;
         this.details = details;
         this.maxScore = maxScore;
         this.earnedScore = earnedScore;
@@ -74,6 +76,13 @@ public class Assignment {
         return categoryID;
     }
 
+    public String getAssignmentName() {
+        return assignmentName;
+    }
+
+    public void setAssignmentName(String assignmentName) {
+        this.assignmentName = assignmentName;
+    }
 }
 
 

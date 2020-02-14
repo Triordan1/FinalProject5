@@ -1,6 +1,5 @@
 package com.example.finalproject5.Controller;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject5.Model.Assignment.AssignmentDao;
+import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.R;
-import com.example.finalproject5.View.CourseView;
 
 import java.util.List;
 
@@ -19,27 +17,25 @@ import java.util.List;
 
 public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<AssignmentDao> mCourseAssignments;
-    private CourseView mCourseView;
+    private List<Assignment> mCourseAssignments;
 
-    public CourseViewAdapter(Context context, List<AssignmentDao> assignments,
-                             CourseView courseView) {
-        this.mContext = context;
+    public CourseViewAdapter(List<Assignment> assignments) {
         this.mCourseAssignments = assignments;
-        this.mCourseView = courseView;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.
-                from(mContext).inflate(R.layout.item_assignment, parent, false));
+                from(parent.getContext()).inflate(R.layout.item_assignment, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(mCourseAssignments.get(position));
+        Assignment assignment = mCourseAssignments.get(position);
+        holder.tvCourseName.setText(assignment.getAssignmentName());
+        holder.tvCategory.setText(assignment.getCourseID());
+
     }
 
     @Override
@@ -56,17 +52,11 @@ public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvCourseName = itemView.findViewById(R.id.tvCourseName);
+            tvCourseName = itemView.findViewById(R.id.tvAssignment);
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvGrade = itemView.findViewById(R.id.tvGrade);
             tvDetails = itemView.findViewById(R.id.tvDetails);
         }
-
-        public void bind(AssignmentDao a) {
-
-        }
-
-
     }
 
 }
