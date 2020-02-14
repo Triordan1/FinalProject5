@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 
 import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 
@@ -72,11 +74,12 @@ public class UserActivity extends AppCompatActivity {
 
         //Get all courses
         List<Course> userCourses = courseObj.getAllCoursesWithUser(findUser);
-
+        Grade gradeGet = new Grade();
+        double grade= gradeGet.getGrade(UserActivity.this,findUser);
         //Loop through all courses with user name
         for (Course tempCourse: userCourses) {
             //Create a new item list Entry
-            ItemModel singleItem = new ItemModel(tempCourse.getTitle(), tempCourse.getInstructor());
+            ItemModel singleItem = new ItemModel(tempCourse.getTitle(), tempCourse.getInstructor(),grade);
             listItems.add(singleItem);
         }
     }

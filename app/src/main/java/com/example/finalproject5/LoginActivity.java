@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passw = findViewById(R.id.password);
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
+
+
                // UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
               //  User user = dao.login(username,password);
                 if (user == null) {
@@ -62,8 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
                         CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
-                        cObj.insert(new Course("Rodrigo","teacher1","class1","desc1","start1","end1"));
-                        cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","end2"));
+                        cObj.insert(new Course("Rodrigo","teacher1","class1","desc1","start1","Rodrigo"));
+                        cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","Rodrigo"));
 
                         //Get Username from table object
                         String loginUser = user.getUsername();

@@ -2,8 +2,6 @@ package com.example.finalproject5.Model.Category;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.example.finalproject5.Model.Grade.Grade;
 import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;

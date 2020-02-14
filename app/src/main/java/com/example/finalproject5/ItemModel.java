@@ -5,11 +5,13 @@ public class ItemModel {
     //Fields in the item
     private String className;
     private String classInstructor;
+    double grade;
 
     //Constructor
-    public ItemModel (String className, String classInstructor) {
+    public ItemModel (String className, String classInstructor,double grade) {
         this.className = className;
         this.classInstructor = classInstructor;
+        this.grade=grade;
     }
 
     //Setters
@@ -28,5 +30,8 @@ public class ItemModel {
 
     public String getClassInstructor() {
         return classInstructor;
+    }
+    public String getGrade(){
+        return Double.toString(grade);
     }
 }

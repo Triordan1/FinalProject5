@@ -47,6 +47,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
         //Set Text to Views
         holder.tvClassName.setText(currentList.getClassName());
         holder.tvClassInstructor.setText(currentList.getClassInstructor());
+        holder.tvgrade.setText(currentList.getGrade());
 
         //Set on click listener for button clicks
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +87,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
         //Two Fields in item
         public TextView tvClassName;
         public TextView tvClassInstructor;
+        public TextView tvgrade;
         public LinearLayout linearLayout;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -95,6 +97,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
             //Connect textfields within items themselves
             tvClassName = (TextView) itemView.findViewById(R.id.textViewClass);
             tvClassInstructor = (TextView) itemView.findViewById(R.id.textViewInstructor);
+            tvgrade=(TextView) itemView.findViewById(R.id.grade);
 
             //Connect LinearLayout for button presses
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayoutID);
