@@ -25,6 +25,20 @@ public interface AssignmentDao {
 
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE  + " ORDER BY assignmentID DESC")
     List<Assignment> getAllAssignments();
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllTest(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllQuiz(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllHw(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getFinal(String username, String categoryID);
+
+
 }
 
 

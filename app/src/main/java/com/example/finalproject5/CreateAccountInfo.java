@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.User.UserDao;
+
 public class CreateAccountInfo extends AppCompatActivity {
 
     Button create;
@@ -44,6 +48,9 @@ public class CreateAccountInfo extends AppCompatActivity {
         }else{
             String usern = userInput.getText().toString();
             String userp = userPassword.getText().toString();
+            UserDao userDao = AppDatabase.getAppDatabase(CreateAccountInfo.this).dao();
+
+
             goBack();
         }
     }

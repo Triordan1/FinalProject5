@@ -26,4 +26,10 @@ public interface CourseDao {
 
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE  + " ORDER BY courseID DESC")
     List<Course> getAllCourses();
+
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE title = :title")
+    Course getCourseFromTitle(String title);
+
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :user")
+    List<Course> getAllCoursesWithUser(String user);
 }

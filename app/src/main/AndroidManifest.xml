@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.CourseView"></activity>
+        <activity android:name=".UserActivity"></activity>
         <activity
             android:name=".Create_Class"
             android:label="@string/title_activity_create__class"

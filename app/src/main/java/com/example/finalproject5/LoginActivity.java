@@ -1,6 +1,7 @@
 package com.example.finalproject5;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.finalproject5.Model.Course.Course;
+import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
@@ -31,8 +34,10 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passw = findViewById(R.id.password);
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
-                //UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
-                //User user = dao.login(username,password);
+
+
+               // UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
+              //  User user = dao.login(username,password);
                 if (user == null) {
                     UserDao dao = AppDatabase.getAppDatabase(LoginActivity.this).dao();
                     User user = dao.login(username, password);
@@ -41,7 +46,10 @@ public class LoginActivity extends AppCompatActivity {
                         TextView msg = findViewById(R.id.message);
                         msg.setText("Username or Password is incorrect");
                     } else {
+                        MainActivity.user= username;
+                        //inform user login was a success
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setMessage(R.string.successlogin).setTitle(R.string.login);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -51,6 +59,27 @@ public class LoginActivity extends AppCompatActivity {
                         AlertDialog dialog = builder.create();
                         dialog.show();
                         //This code is very well maintained, I liked the indentation
+
+                        //// Johnnys Portion, You can edit/delete it all //////
+
+                        //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
+                        CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
+                        cObj.insert(new Course("Rodrigo","teacher1","class1","desc1","start1","Rodrigo"));
+                        cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","Rodrigo"));
+
+                        //Get Username from table object
+                        String loginUser = user.getUsername();
+
+                        //Create Intent for changing screens
+                        Intent intentLoginToUserAct = new Intent(LoginActivity.this, UserActivity.class);
+
+                        //Extras
+                        intentLoginToUserAct.putExtra("LoggedInUser", loginUser);
+
+                        //Change screens
+                        startActivity(intentLoginToUserAct);
+
+                        ///// End of Johnnys Portion /////
                     }
                 }
             }
