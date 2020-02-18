@@ -61,7 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public static final String dbName="db-gradechecker";
-    public static final String USER_TABLE="user";
+    public static final String USER_TABLE="user";//this one is used to store create an account
     public static final String COURSE_TABLE="course";
     public static final String ASSIGNMENT_TABLE="assignment";
     public static final String CATEGORY_TABLE="category";
@@ -73,5 +73,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract CategoryDao categoryDao();
     public abstract GradeDao gradeDao();
     public abstract EnrollmentDao enrollmentDao();
+
 
 }

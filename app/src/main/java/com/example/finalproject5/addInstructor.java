@@ -10,9 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class addInstructor extends AppCompatActivity {
+    //These are the Buttons to add a teacher and to go back if you hit the add instructor by accident
     Button Add;
     Button GB;
 
+    //This is the two edit texts that allow the user to input the teachers name and the title of the course
     EditText teacher;
     EditText course;
 
@@ -20,11 +22,13 @@ public class addInstructor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_instructor);
+        //These are the connectors for the buttons and the text edits that allow each of them to have their own unique id
         Add = findViewById(R.id.AIadd);
         GB = findViewById(R.id.AIgoBack);
         teacher = findViewById(R.id.AITeacher);
         course = findViewById(R.id.AICourse);
 
+        //these are the set on click listeners that allow us to call other functions
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +42,8 @@ public class addInstructor extends AppCompatActivity {
             }
         });
     }
+    //this is the add function where it checks if all fields are filled and if they are not filled it will give them a message of error stating that there are missing fields
+
     public void add(){
         if(teacher.getText().toString().isEmpty() || course.getText().toString().isEmpty()){
             Toast.makeText(addInstructor.this,"Not all the required fields are completed. Please complete all.", Toast.LENGTH_LONG).show();
@@ -47,6 +53,7 @@ public class addInstructor extends AppCompatActivity {
             back();
         }
     }
+    //this is the back function which allows the user to go back to the previous page and it is called in both the add and back button
     public void back(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

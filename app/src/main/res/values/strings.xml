@@ -9,7 +9,6 @@
     <string name="professor">Professor</string>
     <string name="create_Class">Create</string>
     <string name="cancel">Cancel</string>
-    <string name="username">User Name</string>
     <string name="password">Password</string>
     <string name="create">Create</string>
     <string name="add">Add</string>
@@ -19,5 +18,10 @@
     <string name="login">Login</string>
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
+    <string name="last_name">Last Name</string>
+    <string name="username">UserName</string>
+    <string name="first_name">First Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="back">back</string>
 
 </resources>

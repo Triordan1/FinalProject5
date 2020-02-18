@@ -9,13 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.User.UserDao;
+
 public class CreateAccountInfo extends AppCompatActivity {
 
     Button create;
+    Button back;
 
-    EditText userInput;
+    EditText username;
+    EditText firstName;
+    EditText lastName;
     EditText userPassword;
 
+    UserDao mUserDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +30,22 @@ public class CreateAccountInfo extends AppCompatActivity {
         setContentView(R.layout.activity_create_account_info);
 
         create = findViewById(R.id.SignUp);
-        userInput = findViewById(R.id.CreateUsername);
+        username = findViewById(R.id.CREATEUsername);
+        firstName = findViewById(R.id.CreateFirstName);
+        lastName = findViewById(R.id.CreateLastName);
         userPassword = findViewById(R.id.CreateP);
+        back = findViewById(R.id.CrGB);
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addingUser();
+            }
+        });
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goBack();
             }
         });
     }
@@ -39,11 +55,15 @@ public class CreateAccountInfo extends AppCompatActivity {
         startActivity(intent);
     }
     public void addingUser(){
-        if(userInput.getText().toString().isEmpty() || userPassword.getText().toString().isEmpty()){
+        if(username.getText().toString().isEmpty() || userPassword.getText().toString().isEmpty() || firstName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty()){
             Toast.makeText(CreateAccountInfo.this,"Not all the required fields are completed. Please complete all.",Toast.LENGTH_LONG).show();
         }else{
-            String usern = userInput.getText().toString();
+            String usern = username.getText().toString();
             String userp = userPassword.getText().toString();
+            String fname = firstName.getText().toString();
+            String lname= lastName.getText().toString();
+            final User newUser = new User(usern,userp,fname,lname);
+            mUserDao.insert(newUser);
             goBack();
         }
     }

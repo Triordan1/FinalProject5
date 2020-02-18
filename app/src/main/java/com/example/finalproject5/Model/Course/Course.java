@@ -26,7 +26,7 @@ public class Course {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
+    
     public void setCourseID(int courseID) {
         this.courseID = courseID;
     }

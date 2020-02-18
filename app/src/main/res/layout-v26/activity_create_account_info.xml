@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="252dp"
+        android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -29,14 +30,50 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/CreateUsername"
+        android:id="@+id/CreateLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/username"
+        android:hint="@string/last_name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/CreateP"
         app:layout_constraintStart_toStartOf="@+id/CreateP" />
+
+    <EditText
+        android:id="@+id/CREATEUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/CreateFirstName"
+        app:layout_constraintEnd_toEndOf="@+id/CreateFirstName" />
+
+    <EditText
+        android:id="@+id/CreateFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/CreateLastName"
+        app:layout_constraintStart_toStartOf="@+id/CreateLastName" />
+
+    <Button
+        android:id="@+id/CrGB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp"
+        app:layout_constraintStart_toStartOf="@+id/SignUp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
