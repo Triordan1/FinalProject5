@@ -8,6 +8,7 @@ import com.example.finalproject5.Model.Assignment.Assignment;
 import java.util.List;
 
 public class Grade {
+
     public double getTestGrade(Context context, String username){
         String test = "test";
         double max = 0;
