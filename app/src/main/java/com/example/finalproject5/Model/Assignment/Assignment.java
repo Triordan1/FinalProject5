@@ -10,12 +10,15 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the assignment details. */
+
 @Entity(tableName = AppDatabase.ASSIGNMENT_TABLE)
 public class Assignment {
     @PrimaryKey(autoGenerate = true)
     private int assignmentID;
 
     private String details;
+    private String assignmentName;
     private double maxScore;
     private double earnedScore;
     private String assignedDate;
@@ -25,9 +28,8 @@ public class Assignment {
     private String username;
 
 
-    public Assignment(int assignmentID, String details, double maxScore, double earnedScore,
+    public Assignment(String assignmentName, String details, double maxScore, double earnedScore,
                       String assignedDate, String dueDate, int courseID, String categoryID, String username) {
-        this.assignmentID = assignmentID;
         this.details = details;
         this.maxScore = maxScore;
         this.earnedScore = earnedScore;
@@ -36,6 +38,7 @@ public class Assignment {
         this.courseID = courseID;
         this.categoryID = categoryID;
         this.username= username;
+        this.assignmentName = assignmentName;
     }
 
     public void setAssignmentID(int assignmentID) {
@@ -110,6 +113,13 @@ public class Assignment {
         this.categoryID = categoryID;
     }
 
+    public String getAssignmentName() {
+        return assignmentName;
+    }
+
+    public void setAssignmentName(String assignmentName) {
+        this.assignmentName = assignmentName;
+    }
 }
 
 

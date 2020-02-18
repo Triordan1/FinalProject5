@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,9 +36,6 @@ public class LoginActivity extends AppCompatActivity {
                 String username = usern.getText().toString();
                 String password = passw.getText().toString();
 
-
-               // UserDao dao = UserDatabase.getUserDatabase(LoginActivity.this).userDao();
-              //  User user = dao.login(username,password);
                 if (user == null) {
                     UserDao dao = AppDatabase.getAppDatabase(LoginActivity.this).dao();
                     User user = dao.login(username, password);
@@ -48,23 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         MainActivity.user= username;
                         //inform user login was a success
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setMessage(R.string.successlogin).setTitle(R.string.login);
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                            }
-                        });
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                        //This code is very well maintained, I liked the indentation
-
-                        //// Johnnys Portion, You can edit/delete it all //////
+                        Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
 
                         //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
                         CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
-                        cObj.insert(new Course("Rodrigo","teacher1","class1","desc1","start1","Rodrigo"));
+                        cObj.insert(new Course("Rodrigo","CST438","class1","desc1","start1","Rodrigo"));
                         cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","Rodrigo"));
 
                         //Get Username from table object
@@ -78,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         //Change screens
                         startActivity(intentLoginToUserAct);
-
-                        ///// End of Johnnys Portion /////
                     }
                 }
             }

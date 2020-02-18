@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.AppDatabase;
 
+/** This class is the entity used to hold the user details. */
+
 @Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
 

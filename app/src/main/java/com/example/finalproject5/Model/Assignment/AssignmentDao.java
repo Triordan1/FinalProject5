@@ -7,8 +7,11 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.Course.Course;
 
 import java.util.List;
+
+/** This class is the data access object used to access the assignment class. */
 
 @Dao
 public interface AssignmentDao {
@@ -35,6 +38,9 @@ public interface AssignmentDao {
 
     @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
     List<Assignment> getFinal(String username, String categoryID);
+
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :user and courseID = :courseID")
+    List<Assignment> getAllCourseAssignments(String user, String courseID);
 
 
 }
