@@ -39,16 +39,18 @@ public class CourseView extends AppCompatActivity {
 
         currentUser = getIntent().getStringExtra("User");
         courseName = String.valueOf(getIntent().getIntExtra("Course", 0));
-
         mCourseDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
                 .courseDao();
-       Course course = mCourseDao.getCourseFromID(courseName);
 
+        Course course = mCourseDao.getCourseFromID(courseName);
+
+        //delete this
         AssignmentDao cObj = AppDatabase.getAppDatabase(CourseView.this).assignmentDao();
-        cObj.insert(new Assignment("HW1","first hw of semester", 100.00,92.00, "Jan. 20, 2020",
-                        "Feb.14, 2020", 1, "1", currentUser));
+        cObj.insert(new Assignment("HW1","first hw of semester",
+               100.00,92.00, "Jan. 20, 2020",
+               "Feb.14, 2020", 1, "1", currentUser));
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
