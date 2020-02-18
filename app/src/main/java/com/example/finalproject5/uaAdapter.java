@@ -58,7 +58,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
                 //Make intent for moving screens
                 Intent intent = new Intent(context, CourseView.class);
                 intent.putExtra("User", UserActivity.currentUser);
-                intent.putExtra("Course", currentList.getClassName());
+                intent.putExtra("Course", currentList.getCourseID());
                 //Switches screen
                 context.startActivity(intent);
             }

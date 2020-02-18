@@ -32,4 +32,7 @@ public interface CourseDao {
 
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :user")
     List<Course> getAllCoursesWithUser(String user);
+
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE courseID = :id")
+    Course getCourseFromID(String id);
 }

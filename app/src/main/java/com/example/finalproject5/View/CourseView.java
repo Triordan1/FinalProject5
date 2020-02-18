@@ -12,6 +12,8 @@ import com.example.finalproject5.Controller.CourseViewAdapter;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;
+import com.example.finalproject5.Model.Course.Course;
+import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.R;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class CourseView extends AppCompatActivity {
     RecyclerView rvAssignments;
     CourseViewAdapter mAdapter;
     AssignmentDao mAssignmentDao;
+    CourseDao mCourseDao;
 
     String currentUser;
     String courseName;
@@ -35,8 +38,13 @@ public class CourseView extends AppCompatActivity {
         setContentView(R.layout.activity_course_view);
 
         currentUser = getIntent().getStringExtra("User");
-        courseName = getIntent().getStringExtra("Course");
+        courseName = String.valueOf(getIntent().getIntExtra("Course", 0));
 
+        mCourseDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
+                .allowMainThreadQueries()
+                .build()
+                .courseDao();
+       Course course = mCourseDao.getCourseFromID(courseName);
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
@@ -46,11 +54,15 @@ public class CourseView extends AppCompatActivity {
 
         tvCourseName = findViewById(R.id.courseName);
         rvAssignments = findViewById(R.id.rvAssignments);
-        tvCourseName.setText(courseName);
+        tvCourseName.setText(course.getTitle());
 
         mAdapter = new CourseViewAdapter(mAssignments);
 
         rvAssignments.setAdapter(mAdapter);
         rvAssignments.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void getAssignments(String user, String course) {
+
     }
 }

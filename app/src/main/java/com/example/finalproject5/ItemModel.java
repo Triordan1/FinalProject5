@@ -3,12 +3,14 @@ package com.example.finalproject5;
 public class ItemModel {
 
     //Fields in the item
+    private int courseID;
     private String className;
     private String classInstructor;
     double grade;
 
     //Constructor
-    public ItemModel (String className, String classInstructor,double grade) {
+    public ItemModel (int id, String className, String classInstructor, double grade) {
+        this.courseID = id;
         this.className = className;
         this.classInstructor = classInstructor;
         this.grade=grade;
@@ -33,5 +35,8 @@ public class ItemModel {
     }
     public String getGrade(){
         return Double.toString(grade);
+    }
+    public int getCourseID() {
+        return courseID;
     }
 }
