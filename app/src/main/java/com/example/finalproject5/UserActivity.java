@@ -29,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
     List<Course> possibleCourses;
 
     //Transferred Data from other screen
-    String currentUser;
+    static String currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

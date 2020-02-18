@@ -26,10 +26,17 @@ public class CourseView extends AppCompatActivity {
     CourseViewAdapter mAdapter;
     AssignmentDao mAssignmentDao;
 
+    String currentUser;
+    String courseName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_view);
+
+        currentUser = getIntent().getStringExtra("User");
+        courseName = getIntent().getStringExtra("Course");
+
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
@@ -39,6 +46,7 @@ public class CourseView extends AppCompatActivity {
 
         tvCourseName = findViewById(R.id.courseName);
         rvAssignments = findViewById(R.id.rvAssignments);
+        tvCourseName.setText(courseName);
 
         mAdapter = new CourseViewAdapter(mAssignments);
 
