@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finalproject5.View.CourseView;
+
 import java.util.List;
 
 public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
@@ -41,7 +43,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull uaAdapter.MyViewHolder holder, int position) {
         //Current
-        ItemModel currentList = listItems.get(position);
+        final ItemModel currentList = listItems.get(position);
         final int pos = holder.getAdapterPosition();
 
         //Set Text to Views
@@ -54,21 +56,9 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 //Make intent for moving screens
-                final Intent intent;
-
-                //Switch Case Testing
-                switch (pos) {
-                    case 0:
-                        intent = new Intent(context, MainActivity.class);
-                        break;
-                    case 1:
-                        intent = new Intent(context, UserActivity.class);
-                        break;
-                    default:
-                        intent = new Intent(context, MainActivity.class);
-                        break;
-                }
-
+                Intent intent = new Intent(context, CourseView.class);
+                intent.putExtra("User", UserActivity.currentUser);
+                intent.putExtra("Course", currentList.getCourseID());
                 //Switches screen
                 context.startActivity(intent);
             }

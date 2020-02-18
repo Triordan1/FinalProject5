@@ -29,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
     List<Course> possibleCourses;
 
     //Transferred Data from other screen
-    String currentUser;
+    static String currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class UserActivity extends AppCompatActivity {
         //Loop through all courses with user name
         for (Course tempCourse: userCourses) {
             //Create a new item list Entry
-            ItemModel singleItem = new ItemModel(tempCourse.getTitle(), tempCourse.getInstructor(),grade);
+            ItemModel singleItem = new ItemModel(tempCourse.getCourseID(), tempCourse.getTitle(), tempCourse.getInstructor(),grade);
             listItems.add(singleItem);
         }
     }

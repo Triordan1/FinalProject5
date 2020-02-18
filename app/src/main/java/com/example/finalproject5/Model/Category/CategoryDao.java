@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
+/** This class is the data access object used to access the category class. */
+
 @Dao
 public interface CategoryDao {
     @Insert

@@ -15,5 +15,6 @@
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
     <string name="create">Create Account</string>
+    <string name="title_activity_course_view">CourseView</string>
     <string name="successlogin">login was successful press okay to continue</string>
 </resources>
