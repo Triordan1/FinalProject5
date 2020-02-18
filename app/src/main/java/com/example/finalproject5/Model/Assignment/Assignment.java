@@ -26,9 +26,8 @@ public class Assignment {
     private String username;
 
 
-    public Assignment(int assignmentID, String assignmentName, String details, double maxScore, double earnedScore,
+    public Assignment(String assignmentName, String details, double maxScore, double earnedScore,
                       String assignedDate, String dueDate, int courseID, String categoryID, String username) {
-        this.assignmentID = assignmentID;
         this.details = details;
         this.maxScore = maxScore;
         this.earnedScore = earnedScore;

@@ -46,11 +46,15 @@ public class CourseView extends AppCompatActivity {
                 .courseDao();
        Course course = mCourseDao.getCourseFromID(courseName);
 
+        AssignmentDao cObj = AppDatabase.getAppDatabase(CourseView.this).assignmentDao();
+        cObj.insert(new Assignment("HW1","first hw of semester", 100.00,92.00, "Jan. 20, 2020",
+                        "Feb.14, 2020", 1, "1", currentUser));
+
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
                 .assignmentDao();
-        List<Assignment> mAssignments = mAssignmentDao.getAllAssignments();
+        List<Assignment> mAssignments = mAssignmentDao.getAllCourseAssignments(currentUser,courseName);
 
         tvCourseName = findViewById(R.id.courseName);
         rvAssignments = findViewById(R.id.rvAssignments);
@@ -62,7 +66,4 @@ public class CourseView extends AppCompatActivity {
         rvAssignments.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void getAssignments(String user, String course) {
-
-    }
 }

@@ -34,8 +34,8 @@ public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Assignment assignment = mCourseAssignments.get(position);
         holder.tvCourseName.setText(assignment.getAssignmentName());
-        holder.tvCategory.setText(assignment.getCourseID());
-
+        holder.tvCategory.setText(assignment.getCategoryID());
+        holder.tvGrade.setText(String.valueOf(assignment.getEarnedScore()));
     }
 
     @Override
