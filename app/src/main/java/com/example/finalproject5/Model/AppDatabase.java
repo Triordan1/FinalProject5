@@ -54,9 +54,29 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     private void loadusers(Context context){
-        UserDao dao = getAppDatabase(context).dao();
+        Log.d("loaduses","loading user and cat");
         User rodrigo= new User("Rodrigo","pass");
+
+        Category test = new Category("test",20,"Rodrigo");
+        Category hw = new Category("hw",50,"Rodrigo");
+        Category quiz = new Category("quiz",30,"Rodrigo");
+        Assignment hw1 = new Assignment(20,18,"hw","Rodrigo");
+        Assignment hw2 = new Assignment(20,18,"hw","Rodrigo");
+        Assignment test1 = new Assignment(20,18,"test","Rodrigo");
+        Assignment test2 = new Assignment(20,18,"test","Rodrigo");
+        Assignment quiz1 = new Assignment(20,18,"quiz","Rodrigo");
+        Assignment quiz2 = new Assignment(20,18,"quiz","Rodrigo");
+        assignmentDao().insert(hw1);
+        assignmentDao().insert(hw2);
+        assignmentDao().insert(test1);
+        assignmentDao().insert(test2);
+        assignmentDao().insert(quiz1);
+        assignmentDao().insert(quiz2);
+        categoryDao().insert(test);
+        categoryDao().insert(hw);
+        categoryDao().insert(quiz);
         dao().insert(rodrigo);
+
     }
 
 

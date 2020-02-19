@@ -2,6 +2,7 @@ package com.example.finalproject5.Model.Assignment;
 
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.Category.Category;
@@ -40,6 +41,16 @@ public class Assignment {
         this.username= username;
         this.assignmentName = assignmentName;
     }
+    //used to populate fake data
+    @Ignore
+    public Assignment(double maxScore, double earnedScore, String categoryID, String username) {
+        this.maxScore = maxScore;
+        this.earnedScore = earnedScore;
+        this.categoryID = categoryID;
+        this.username = username;
+    }
+
+
 
     public void setAssignmentID(int assignmentID) {
         this.assignmentID = assignmentID;

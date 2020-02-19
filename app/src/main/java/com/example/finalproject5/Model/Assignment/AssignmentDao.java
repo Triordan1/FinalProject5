@@ -42,6 +42,10 @@ public interface AssignmentDao {
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :user and courseID = :courseID")
     List<Assignment> getAllCourseAssignments(String user, String courseID);
 
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAll(String username, String categoryID);
+
+
 
 }
 

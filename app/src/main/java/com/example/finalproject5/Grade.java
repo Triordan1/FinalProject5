@@ -4,82 +4,57 @@ import android.content.Context;
 
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
+import com.example.finalproject5.Model.Category.Category;
 
 import java.util.List;
 
 public class Grade {
 
-    public double getTestGrade(Context context, String username){
-        String test = "test";
-        double max = 0;
-        double total =0 ;
-        double grade;
-        List<Assignment> scores = AppDatabase.getAppDatabase(context).assignmentDao().getAllTest(username,test);
-        if (scores.size()!=0){
-            for (Assignment a:scores
-            ) {
-                max = max +  a.getMaxScore();
-                total = total + a.getEarnedScore();
-            }
-            grade = total/max;
 
-        }else{
-            grade= 1;
+    private double getCategoryGrade(Context context, String username, Category category) {
+        double grade =0;
+
+        // hold max grade and earned for each assignment
+        int maxScore=0;
+        int scoreEarnd=0;
+        double weight ;
+
+        // get list of all Assignments for this category
+        List<Assignment> assignments = AppDatabase.getAppDatabase(context).assignmentDao().getAll(username,category.getTitle());
+
+        if(assignments.size()!=0){
+
+            for (Assignment asg: assignments) {
+                scoreEarnd += asg.getEarnedScore();
+                maxScore += asg.getMaxScore();
+            }
+            weight= (double)category.getWeight()/100;
+            grade = (double) scoreEarnd/maxScore;
+            grade = grade* weight;
+            return grade;
+        }else {
+            return grade ;
         }
 
-        return  grade;
     }
-    public double getHwGrade(Context context,String username){
-        String hw = "hw";
-        double max = 0;
-        double total =0 ;
-        double grade;
-        List<Assignment> scores = AppDatabase.getAppDatabase(context).assignmentDao().getAllHw(username,hw);
-        if (scores.size()!=0){
-            for (Assignment a:scores
-            ) {
-                max = max +  a.getMaxScore();
-                total = total + a.getEarnedScore();
-            }
-            grade = total/max;
-        }else{
-            grade= 1;
-        }
 
-        return grade;
-    }
-    public double getQuizGrade(Context context,String username){
-        String quiz = "quiz";
-        double max = 0;
-        double total =0 ;
-        double grade;
-        List<Assignment> scores = AppDatabase.getAppDatabase(context).assignmentDao().getAllQuiz(username,quiz);
-        if (scores.size()!=0){
-            for (Assignment a:scores
-            ) {
-                max = max +  a.getMaxScore();
-                total = total + a.getEarnedScore();
-            }
-            grade = total/max;
-        } else{
-            grade= 1;
-        }
-        return  grade;
-    }
+
     public double getGrade(Context context,String username){
-        double testScore;
-        double hwScore;
-        double quizeScore;
-        double grade;
 
+        double grade=0;
 
-        hwScore = getHwGrade(context,username);
-        testScore = getTestGrade(context,username);
-        quizeScore = getQuizGrade(context,username);
-        grade= ( testScore * 20)+(hwScore*50)+(quizeScore*30);
-
-
-
-        return grade;
+        // get list of all categories for this user
+        List<Category> categories = AppDatabase.getAppDatabase(context).categoryDao().getAllCategories(username);
+        if (categories.size()!= 0 ){
+            /// get grade for each category and add it to running total
+            for (Category cat: categories) {
+                double score;
+                score = getCategoryGrade(context ,username, cat );
+                grade = grade + score;
+            }
+            return grade * 100;
+        }else {
+            return 1;
+        }
     }
 }

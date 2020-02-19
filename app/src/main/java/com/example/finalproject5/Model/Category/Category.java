@@ -1,6 +1,7 @@
 package com.example.finalproject5.Model.Category;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import com.example.finalproject5.Model.AppDatabase;
 
@@ -26,6 +27,12 @@ public class Category {
         this.assignedDate = assignedDate;
         this.gradeID = gradeID;
         this.username= username;
+    }
+    @Ignore
+    public Category(String title, int weight, String username) {
+        this.title = title;
+        this.weight = weight;
+        this.username = username;
     }
 
     public void setCategoryID(int categoryID) {
