@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/textViewInstructor"
-                android:text="DESCRIPTION HOLDER"
+                android:text="INSTRUCTOR HOLDER"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

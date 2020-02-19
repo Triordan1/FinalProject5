@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".EditUserActivity"></activity>
+        <activity android:name=".TestCourseAct" />
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_text" />
         <activity
             android:name=".Create_Class"
-            android:label="@string/title_activity_create__class"
+            android:label="CREATE A CLASS"
             android:theme="@style/AppTheme" />
         <activity android:name=".CreateAccountInfo" />
         <activity android:name=".MainActivity">

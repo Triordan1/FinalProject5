@@ -20,6 +20,9 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
     private List<ItemModel> listItems;
     private Context context;
 
+    //Var for sending extras
+    String sentCourseTitle;
+
     //Constructor for item list
     public uaAdapter (List<ItemModel> itemList, Context context) {
         this.listItems = itemList;
@@ -57,14 +60,16 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
 
                 //Switch Case Testing
                 switch (pos) {
-                    case 0:
-                        intent = new Intent(context, MainActivity.class);
-                        break;
-                    case 1:
-                        intent = new Intent(context, UserActivity.class);
-                        break;
                     default:
-                        intent = new Intent(context, MainActivity.class);
+                        //Create temp item and assign the var course title
+                        ItemModel currentItem = listItems.get(pos);
+                        sentCourseTitle = currentItem.getClassName();
+
+                        //Change to Cass's Course Page
+                        intent = new Intent(context, TestCourseAct.class);
+
+                        //Give Extras
+                        intent.putExtra("sentCourse", sentCourseTitle);
                         break;
                 }
 

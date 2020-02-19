@@ -15,5 +15,10 @@
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
     <string name="create">Create Account</string>
+    <string name="title_text">Title Text</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="editUser">Edit User</string>
+    <string name="editFirstname">New First Name</string>
+    <string name="editLastname">New Last Name</string>
 
 </resources>

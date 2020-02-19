@@ -53,8 +53,10 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private void loadusers(Context context){
         UserDao dao = getAppDatabase(context).dao();
-        User rodrigo= new User("Rodrigo","pass");
+        User rodrigo= new User("rod","pass", "Rod", "Lastname");
+        User john= new User("name","pass", "John", "Smith");
         dao().insert(rodrigo);
+        dao().insert(john);
     }
 
 

@@ -57,19 +57,23 @@ public class LoginActivity extends AppCompatActivity {
 
                         //// Johnnys Portion, You can edit/delete it all //////
 
-                        //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
+                        //Testing by adding 2 course entries to user "rod" *Note: This will run everytime you run the login button and there is a user
                         CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
-                        cObj.insert(new Course("Rodrigo","teacher1","class1","desc1","start1","end1"));
-                        cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","end2"));
+                        cObj.insert(new Course("rod","teacher1","class1","desc1","start1","end1"));
+                        cObj.insert(new Course("rod","teacher2","class2","desc2","start2","end2"));
 
                         //Get Username from table object
                         String loginUser = user.getUsername();
+                        String loginFirstName = user.getFirstName();
+                        String loginLastName = user.getLastName();
 
                         //Create Intent for changing screens
                         Intent intentLoginToUserAct = new Intent(LoginActivity.this, UserActivity.class);
 
                         //Extras
                         intentLoginToUserAct.putExtra("LoggedInUser", loginUser);
+                        intentLoginToUserAct.putExtra("LoggedFirstName", loginFirstName);
+                        intentLoginToUserAct.putExtra("LoggedLastName", loginLastName);
 
                         //Change screens
                         startActivity(intentLoginToUserAct);
