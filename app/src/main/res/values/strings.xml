@@ -25,4 +25,7 @@
     <string name="assignment_description">Assignment Description</string>
     <string name="max_score">Max Score</string>
     <string name="given_score">Given Score</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>
