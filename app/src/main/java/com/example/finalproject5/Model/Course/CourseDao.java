@@ -34,5 +34,5 @@ public interface CourseDao {
     List<Course> getAllCoursesWithUser(String user);
 
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE courseID = :id")
-    Course getCourseFromID(String id);
+    Course getCourseFromID(int id);
 }

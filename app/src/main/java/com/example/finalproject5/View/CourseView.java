@@ -36,7 +36,7 @@ public class CourseView extends AppCompatActivity {
     CourseDao mCourseDao;
 
     String currentUser;
-    String courseName;
+    int courseName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class CourseView extends AppCompatActivity {
         setContentView(R.layout.activity_course_view);
 
         currentUser = getIntent().getStringExtra("User");
-        courseName = String.valueOf(getIntent().getIntExtra("Course", 0));
+        courseName = getIntent().getIntExtra("Course", 0);
         mCourseDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
@@ -56,7 +56,7 @@ public class CourseView extends AppCompatActivity {
         AssignmentDao cObj = AppDatabase.getAppDatabase(CourseView.this).assignmentDao();
         cObj.insert(new Assignment("HW1","first hw of semester",
                100.00,92.00, "Jan. 20, 2020",
-               "Feb.14, 2020", 1, "1", currentUser));
+               "Feb.14, 2020", courseName, "1", currentUser));
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
@@ -69,7 +69,7 @@ public class CourseView extends AppCompatActivity {
         btAdd = findViewById(R.id.btAdd);
         tvCourseName.setText(course.getTitle());
 
-        mAdapter = new CourseViewAdapter(mAssignments);
+        mAdapter = new CourseViewAdapter(getApplicationContext(), mAssignments,currentUser);
 
         rvAssignments.setAdapter(mAdapter);
         rvAssignments.setLayoutManager(new LinearLayoutManager(this));

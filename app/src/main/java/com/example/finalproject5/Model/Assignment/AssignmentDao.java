@@ -40,7 +40,10 @@ public interface AssignmentDao {
     List<Assignment> getFinal(String username, String categoryID);
 
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :user and courseID = :courseID")
-    List<Assignment> getAllCourseAssignments(String user, String courseID);
+    List<Assignment> getAllCourseAssignments(String user, int courseID);
+
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE assignmentID = :id")
+    Assignment getAssignmentByID(int id);
 
 
 }

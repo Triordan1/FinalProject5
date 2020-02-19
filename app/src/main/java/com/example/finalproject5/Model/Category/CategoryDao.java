@@ -25,4 +25,7 @@ public interface CategoryDao {
 
     @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " ORDER BY categoryID DESC")
     List<Category> getAllCategories();
+
+    @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE + " WHERE categoryID = :id")
+    Category getCategoryByID(String id);
 }
