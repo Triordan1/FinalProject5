@@ -17,4 +17,5 @@
     <string name="create">Create Account</string>
     <string name="title_activity_course_view">CourseView</string>
     <string name="successlogin">login was successful press okay to continue</string>
+    <string name="goBack">TextView</string>
 </resources>

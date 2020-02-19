@@ -25,7 +25,7 @@ import java.util.List;
 /** This class is the database used to access and link each of our tables within the database. */
 
 @Database(entities = {User.class, Course.class, Assignment.class, Category.class,
-        Enrollment.class, Instructor.class}, version = 1, exportSchema = false)
+        Enrollment.class, Instructor.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
