@@ -23,6 +23,6 @@ public interface CategoryDao {
     @Delete
     void delete(Category category);
 
-    @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " where username= :username and courseTitle = :courseTitle")
-    List<Category> getAllCategories(String username, String courseTitle);
+    @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " where username= :username and courseID = :courseID")
+    List<Category> getAllCategories(String username, int courseID);
 }

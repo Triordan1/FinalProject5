@@ -57,24 +57,7 @@ public abstract class AppDatabase extends RoomDatabase {
         Log.d("loaduses","loading user and cat");
         User rodrigo= new User("Rodrigo","pass");
 
-        Category test = new Category("test",20,"Rodrigo","CST438");
-        Category hw = new Category("hw",50,"Rodrigo","CST438");
-        Category quiz = new Category("quiz",30,"Rodrigo","CST438");
-        Assignment hw1 = new Assignment(20,18,"hw","Rodrigo","CST438");
-        Assignment hw2 = new Assignment(20,18,"hw","Rodrigo","CST438");
-        Assignment test1 = new Assignment(20,18,"test","Rodrigo","CST438");
-        Assignment test2 = new Assignment(20,18,"test","Rodrigo","CST438");
-        Assignment quiz1 = new Assignment(20,18,"quiz","Rodrigo","CST438");
-        Assignment quiz2 = new Assignment(20,18,"quiz","Rodrigo","CST438");
-        assignmentDao().insert(hw1);
-        assignmentDao().insert(hw2);
-        assignmentDao().insert(test1);
-        assignmentDao().insert(test2);
-        assignmentDao().insert(quiz1);
-        assignmentDao().insert(quiz2);
-        categoryDao().insert(test);
-        categoryDao().insert(hw);
-        categoryDao().insert(quiz);
+
         dao().insert(rodrigo);
 
     }

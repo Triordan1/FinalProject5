@@ -13,7 +13,7 @@ import java.util.Date;
 public class Category {
     @PrimaryKey(autoGenerate = true)
     private int categoryID;
-    private String courseTitle;
+    private int courseID;
 
     private String title;
     private int weight;
@@ -22,13 +22,15 @@ public class Category {
     private String username;
 
 
-    public Category(String title, int weight, String assignedDate, int gradeID, String username) {
+    public Category(String title, int weight, String assignedDate, int gradeID, String username, int courseID) {
         this.title = title;
         this.weight = weight;
         this.assignedDate = assignedDate;
         this.gradeID = gradeID;
         this.username= username;
+        this.courseID= courseID;
     }
+    /* used for testing
     @Ignore
     public Category(String title, int weight, String username ,String courseTitle) {
         this.title = title;
@@ -43,6 +45,14 @@ public class Category {
 
     public void setCourseTitle(String courseTitle) {
         this.courseTitle = courseTitle;
+    }*/
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 
     public void setCategoryID(int categoryID) {

@@ -11,7 +11,7 @@ import java.util.List;
 public class Grade {
 
 
-    private double getCategoryGrade(Context context, String username, Category category, String courseTittle) {
+    private double getCategoryGrade(Context context, String username, Category category, int courseID) {
         double grade =0;
 
         // hold max grade and earned for each assignment
@@ -20,7 +20,7 @@ public class Grade {
         double weight ;
 
         // get list of all Assignments for this category
-        List<Assignment> assignments = AppDatabase.getAppDatabase(context).assignmentDao().getAll(username,category.getTitle(),courseTittle);
+        List<Assignment> assignments = AppDatabase.getAppDatabase(context).assignmentDao().getAll(username,category.getTitle(),courseID);
 
         if(assignments.size()!=0){
 
@@ -39,17 +39,17 @@ public class Grade {
     }
 
 
-    public double getGrade(Context context,String username,String courseTitle){
+    public double getGrade(Context context,String username,int courseID){
 
         double grade=0;
         double score;
         // get list of all categories for this user
-        List<Category> categories = AppDatabase.getAppDatabase(context).categoryDao().getAllCategories(username,courseTitle);
+        List<Category> categories = AppDatabase.getAppDatabase(context).categoryDao().getAllCategories(username,courseID);
         if (categories.size()!= 0 ){
             /// get grade for each category and add it to running total
             for (Category cat: categories) {
 
-                score = getCategoryGrade(context ,username, cat, courseTitle );
+                score = getCategoryGrade(context ,username, cat, courseID );
                 grade = grade + score;
             }
             return grade * 100;
