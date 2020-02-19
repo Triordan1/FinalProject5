@@ -38,7 +38,7 @@
         android:layout_marginTop="47dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-        android:hint="Assignment name"
+        android:hint="@string/assignment_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-        android:hint="Assignment Description"
+        android:hint="@string/assignment_description"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Max Score"
+        android:hint="@string/max_score"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AssDetails" />
@@ -77,7 +77,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-        android:hint="Given Score"
+        android:hint="@string/given_score"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AssDetails" />
@@ -87,14 +87,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-        android:hint="Date Assigned"
+        android:hint="@string/date_assigned"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AssMax" />
+        app:layout_constraintTop_toBottomOf="@+id/AssType" />
 
     <EditText
         android:id="@+id/AssDue"
@@ -104,9 +105,23 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-        android:hint="Due Date"
+        android:hint="@string/due_date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AssDate" />
+
+    <EditText
+        android:id="@+id/AssType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="99dp"
+        android:ems="10"
+        android:hint="@string/assignment_type"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AssMax" />
 </androidx.constraintlayout.widget.ConstraintLayout>
