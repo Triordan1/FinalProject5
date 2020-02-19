@@ -18,10 +18,15 @@
     <string name="login">Login</string>
     <string name="CreateAccount">Create Account</string>
     <string name="WelcomeMsg">Select an option human</string>
+
     <string name="last_name">Last Name</string>
     <string name="username">UserName</string>
     <string name="first_name">First Name</string>
     <string name="sign_up">Sign Up</string>
     <string name="back">back</string>
 
+
+    <string name="title_activity_course_view">CourseView</string>
+    <string name="successlogin">login was successful press okay to continue</string>
+    <string name="course_id">Course Id</string>
 </resources>

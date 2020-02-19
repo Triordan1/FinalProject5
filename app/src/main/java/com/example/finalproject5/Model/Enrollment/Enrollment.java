@@ -9,6 +9,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.Date;
 
+/** This class is the entity used to hold the enrollment details. */
+
 @Entity(tableName = AppDatabase.ENROLLMENT_TABLE)
 public class Enrollment {
     @PrimaryKey(autoGenerate = true)
@@ -17,11 +19,14 @@ public class Enrollment {
     private int studentID;
     private int courseID;
     private String enrollmentDate;
+    private String username;
 
-    public Enrollment(int studentID, int courseID, String enrollmentDate) {
+
+    public Enrollment(int studentID, int courseID, String enrollmentDate, String username) {
         this.studentID = studentID;
         this.courseID = courseID;
         this.enrollmentDate = enrollmentDate;
+        this.username= username;
     }
 
     public void setEnrollmentID(int enrollmentID) {
@@ -42,5 +47,25 @@ public class Enrollment {
 
     public String getEnrollmentDate() {
         return enrollmentDate;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
+
+    public void setEnrollmentDate(String enrollmentDate) {
+        this.enrollmentDate = enrollmentDate;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

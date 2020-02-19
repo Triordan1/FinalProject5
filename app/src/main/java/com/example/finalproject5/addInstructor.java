@@ -15,8 +15,9 @@ public class addInstructor extends AppCompatActivity {
     Button GB;
 
     //This is the two edit texts that allow the user to input the teachers name and the title of the course
-    EditText teacher;
-    EditText course;
+    EditText firstname;
+    EditText lastname;
+    EditText courseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +26,9 @@ public class addInstructor extends AppCompatActivity {
         //These are the connectors for the buttons and the text edits that allow each of them to have their own unique id
         Add = findViewById(R.id.AIadd);
         GB = findViewById(R.id.AIgoBack);
-        teacher = findViewById(R.id.AITeacher);
-        course = findViewById(R.id.AICourse);
+        firstname = findViewById(R.id.createAFirstN);
+        lastname = findViewById(R.id.AITeacher);
+        courseId = findViewById(R.id.AICourse);
 
         //these are the set on click listeners that allow us to call other functions
         Add.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +47,12 @@ public class addInstructor extends AppCompatActivity {
     //this is the add function where it checks if all fields are filled and if they are not filled it will give them a message of error stating that there are missing fields
 
     public void add(){
-        if(teacher.getText().toString().isEmpty() || course.getText().toString().isEmpty()){
+        if(lastname.getText().toString().isEmpty() || courseId.getText().toString().isEmpty() || firstname.getText().toString().isEmpty()){
             Toast.makeText(addInstructor.this,"Not all the required fields are completed. Please complete all.", Toast.LENGTH_LONG).show();
         }else{
-            String teach = teacher.getText().toString();
-            String crs = course.getText().toString();
+            String teachlast = lastname.getText().toString();
+            String crs = courseId.getText().toString();
+            String teachfirst = firstname.getText().toString();
             back();
         }
     }

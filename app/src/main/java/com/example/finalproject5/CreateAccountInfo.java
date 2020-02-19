@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import com.example.finalproject5.Model.AppDatabase;
+
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
@@ -60,9 +63,13 @@ public class CreateAccountInfo extends AppCompatActivity {
         }else{
             String usern = username.getText().toString();
             String userp = userPassword.getText().toString();
+
             String fname = firstName.getText().toString();
             String lname= lastName.getText().toString();
             final User newUser = new User(usern,userp,fname,lname);
+            mUserDao.insert(newUser);
+
+//            UserDao userDao = AppDatabase.getAppDatabase(CreateAccountInfo.this).dao();
             mUserDao.insert(newUser);
             goBack();
         }

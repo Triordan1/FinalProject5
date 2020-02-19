@@ -5,9 +5,6 @@ import android.os.Bundle;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
@@ -18,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Create_Class extends AppCompatActivity {
+
     /* DONE : hook up class activity buttons to database */
     Button create;
     Button cancel;
@@ -59,9 +57,17 @@ public class Create_Class extends AppCompatActivity {
             String userProf = cProf.getText().toString();
             String userS = sDate.getText().toString();
             String userE = eDate.getText().toString();
+
+            //For now removed
+
+            /*
             final Course newCourse = new Course(userProf,userN,userNum,userS,userE);
             mCourseDao.insert(newCourse);
+
+             */
         }
+
     }
+
 
 }
