@@ -17,4 +17,15 @@
     <string name="create">Create Account</string>
     <string name="title_activity_course_view">CourseView</string>
     <string name="successlogin">login was successful press okay to continue</string>
+    <string name="goBack">TextView</string>
+    <string name="date_assigned">Date Assigned</string>
+    <string name="assignment_type">Assignment Type</string>
+    <string name="due_date">Due Date</string>
+    <string name="assignment_name">Assignment name</string>
+    <string name="assignment_description">Assignment Description</string>
+    <string name="max_score">Max Score</string>
+    <string name="given_score">Given Score</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>
