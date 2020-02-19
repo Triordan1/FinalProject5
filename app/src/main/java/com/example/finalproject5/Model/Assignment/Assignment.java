@@ -17,6 +17,8 @@ import java.util.Date;
 public class Assignment {
     @PrimaryKey(autoGenerate = true)
     private int assignmentID;
+    // added to test
+    private String courseTitle;
 
     private String details;
     private String assignmentName;
@@ -43,14 +45,21 @@ public class Assignment {
     }
     //used to populate fake data
     @Ignore
-    public Assignment(double maxScore, double earnedScore, String categoryID, String username) {
+    public Assignment(double maxScore, double earnedScore, String categoryID, String username,String courseTitle) {
         this.maxScore = maxScore;
         this.earnedScore = earnedScore;
         this.categoryID = categoryID;
         this.username = username;
+        this.courseTitle = courseTitle;
     }
 
+    public String getCourseTitle() {
+        return courseTitle;
+    }
 
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
 
     public void setAssignmentID(int assignmentID) {
         this.assignmentID = assignmentID;

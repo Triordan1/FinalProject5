@@ -27,23 +27,12 @@ public interface AssignmentDao {
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE  + " ORDER BY assignmentID DESC")
     List<Assignment> getAllAssignments();
 
-    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
-    List<Assignment> getAllTest(String username, String categoryID);
-
-    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
-    List<Assignment> getAllQuiz(String username, String categoryID);
-
-    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
-    List<Assignment> getAllHw(String username, String categoryID);
-
-    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
-    List<Assignment> getFinal(String username, String categoryID);
 
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :user and courseID = :courseID")
     List<Assignment> getAllCourseAssignments(String user, String courseID);
 
-    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
-    List<Assignment> getAll(String username, String categoryID);
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID and courseTitle = :courseTitle ")
+    List<Assignment> getAll(String username, String categoryID, String courseTitle);
 
 
 

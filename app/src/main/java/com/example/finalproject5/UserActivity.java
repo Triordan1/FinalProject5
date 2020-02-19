@@ -75,9 +75,10 @@ public class UserActivity extends AppCompatActivity {
         //Get all courses
         List<Course> userCourses = courseObj.getAllCoursesWithUser(findUser);
         Grade gradeGet = new Grade();
-        double grade= gradeGet.getGrade(UserActivity.this,findUser);
+
         //Loop through all courses with user name
         for (Course tempCourse: userCourses) {
+            double grade= gradeGet.getGrade(UserActivity.this,findUser, tempCourse.getTitle());
             //Create a new item list Entry
             ItemModel singleItem = new ItemModel(tempCourse.getCourseID(), tempCourse.getTitle(), tempCourse.getInstructor(),grade);
             listItems.add(singleItem);

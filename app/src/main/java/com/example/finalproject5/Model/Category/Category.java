@@ -13,6 +13,7 @@ import java.util.Date;
 public class Category {
     @PrimaryKey(autoGenerate = true)
     private int categoryID;
+    private String courseTitle;
 
     private String title;
     private int weight;
@@ -29,10 +30,19 @@ public class Category {
         this.username= username;
     }
     @Ignore
-    public Category(String title, int weight, String username) {
+    public Category(String title, int weight, String username ,String courseTitle) {
         this.title = title;
         this.weight = weight;
         this.username = username;
+        this.courseTitle = courseTitle;
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
     }
 
     public void setCategoryID(int categoryID) {
