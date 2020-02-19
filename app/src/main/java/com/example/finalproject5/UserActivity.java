@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
@@ -30,6 +33,8 @@ public class UserActivity extends AppCompatActivity {
 
     //Transferred Data from other screen
     static String currentUser;
+
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,16 @@ public class UserActivity extends AppCompatActivity {
 
         //Set Adapter to Recycler View
         recyclerView.setAdapter(recAdapter);
+
+        button = (Button) findViewById(R.id.create_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this,Create_Class.class);
+                intent.putExtra("LoggedInUser",currentUser);
+                startActivity(intent);
+            }
+        });
 
     }
 

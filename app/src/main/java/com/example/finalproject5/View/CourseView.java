@@ -1,20 +1,29 @@
 package com.example.finalproject5.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalproject5.Controller.CourseViewAdapter;
+import com.example.finalproject5.Create_Assignment;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.R;
+import com.example.finalproject5.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +33,7 @@ import java.util.List;
 public class CourseView extends AppCompatActivity {
 
     TextView tvCourseName;
+    ImageButton btAdd;
     RecyclerView rvAssignments;
     CourseViewAdapter mAdapter;
     AssignmentDao mAssignmentDao;
@@ -31,7 +41,7 @@ public class CourseView extends AppCompatActivity {
 
     String currentUser;
     String courseName;
-
+    Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +57,13 @@ public class CourseView extends AppCompatActivity {
         Course course = mCourseDao.getCourseFromID(courseName);
 
         //delete this
-        AssignmentDao cObj = AppDatabase.getAppDatabase(CourseView.this).assignmentDao();
-        cObj.insert(new Assignment("HW1","first hw of semester",
-               100.00,92.00, "Jan. 20, 2020",
-               "Feb.14, 2020", 1, "1", currentUser));
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
@@ -60,12 +73,45 @@ public class CourseView extends AppCompatActivity {
 
         tvCourseName = findViewById(R.id.courseName);
         rvAssignments = findViewById(R.id.rvAssignments);
+        btAdd = findViewById(R.id.btAdd);
         tvCourseName.setText(course.getTitle());
 
         mAdapter = new CourseViewAdapter(mAssignments);
 
         rvAssignments.setAdapter(mAdapter);
         rvAssignments.setLayoutManager(new LinearLayoutManager(this));
+
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String options[] = {"Edit Categories", "Add Assignment"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(CourseView.this);
+                builder.setTitle("What would you like to do?");
+                builder.setCancelable(true);
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which == 0) {
+                            //create intent to go to edit categories
+                        } else {
+                            //create intent to go to add assignment
+                            Intent intent = new Intent(CourseView.this, Create_Assignment.class);
+                            intent.putExtra("LoggedInUser",currentUser);
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+                builder.show();
+            }
+        });
+    }
+    public void goBack()
+    {
+        Intent intent = new Intent(CourseView.this, UserActivity.class);
+        intent.putExtra("LoggedInUser",currentUser);
+        startActivity(intent);
     }
 
 }
