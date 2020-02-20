@@ -143,7 +143,8 @@ public class AssignmentDetails extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //delete assignment
+                mAssignmentDao.delete(assignment);
+                goBack();
             }
         });
 
