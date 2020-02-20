@@ -49,10 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
 
                         //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
+                       /* Deprecated tests
                         CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
                         cObj.insert(new Course("Rodrigo","CST438","class1","desc1","start1","Rodrigo"));
                         cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","Rodrigo"));
-
+                        */
                         //Get Username from table object
                         String loginUser = user.getUsername();
 

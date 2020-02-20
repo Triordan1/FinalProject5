@@ -19,7 +19,8 @@ public class CreateAccountInfo extends AppCompatActivity {
 
     EditText userInput;
     EditText userPassword;
-
+    EditText FiName;
+    EditText LaName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,8 @@ public class CreateAccountInfo extends AppCompatActivity {
         create = findViewById(R.id.SignUp);
         userInput = findViewById(R.id.CreateUsername);
         userPassword = findViewById(R.id.CreateP);
-
+        FiName = findViewById(R.id.FiName);
+        LaName = findViewById(R.id.LaName);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,14 +45,16 @@ public class CreateAccountInfo extends AppCompatActivity {
         startActivity(intent);
     }
     public void addingUser(){
-        if(userInput.getText().toString().isEmpty() || userPassword.getText().toString().isEmpty()){
+        if(userInput.getText().toString().isEmpty() || userPassword.getText().toString().isEmpty()||FiName.getText().toString().isEmpty() || LaName.getText().toString().isEmpty()){
             Toast.makeText(CreateAccountInfo.this,"Not all the required fields are completed. Please complete all.",Toast.LENGTH_LONG).show();
         }else{
             String usern = userInput.getText().toString();
             String userp = userPassword.getText().toString();
+            String userFN = FiName.getText().toString();
+            String userLN = LaName.getText().toString();
+            final User user = new User(usern,userp,userFN,userLN);
             UserDao userDao = AppDatabase.getAppDatabase(CreateAccountInfo.this).dao();
-
-
+            userDao.insert(user);
             goBack();
         }
     }

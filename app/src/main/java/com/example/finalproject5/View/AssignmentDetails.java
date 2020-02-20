@@ -54,7 +54,7 @@ public class AssignmentDetails extends AppCompatActivity {
 
         mAssignmentId = getIntent().getIntExtra("Assignment", 0);
         mCourseId = getIntent().getIntExtra("Course", 0);
-        currentUser = getIntent().getStringExtra("User");
+        currentUser = getIntent().getStringExtra("LoggedInUser");
 
         mAssignmentDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.dbName)
                 .allowMainThreadQueries()
@@ -112,17 +112,30 @@ public class AssignmentDetails extends AppCompatActivity {
                     etDue.setEnabled(true);
 
                     btEdit.setText("Done");
-                } else {
+                } else if(btEdit.getText().equals("Done")){
+                    etAssignment.setEnabled(false);
+                    assignment.setAssignmentName(etAssignment.getText().toString());
+
+                    etScore.setEnabled(false);
+                    String etScores = etScore.getText().toString();
+                    String parseScore[] = etScores.split("/");
+                    assignment.setEarnedScore(Double.parseDouble(parseScore[0]));
+                    assignment.setMaxScore(Double.parseDouble(parseScore[1]));
+
+                    etDetails.setEnabled(false);
+                    assignment.setDetails(etDetails.getText().toString());
+
+                    etAssigned.setEnabled(false);
+                    assignment.setAssignedDate(etAssigned.getText().toString());
+
+                    etDue.setEnabled(false);
+                    assignment.setDueDate(etDue.getText().toString());
+
                     mAssignmentDao.update(assignment);
                     mCourseDao.update(course);
 
-                    etAssignment.setEnabled(false);
-                    etScore.setEnabled(false);
-                    etDetails.setEnabled(false);
-                    etAssigned.setEnabled(false);
-                    etDue.setEnabled(false);
-
                     btEdit.setText("Edit");
+                    goBack();
                 }
             }
         });
@@ -138,13 +151,17 @@ public class AssignmentDetails extends AppCompatActivity {
         btGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AssignmentDetails.this, CourseView.class);
-                intent.putExtra("User", currentUser);
-                String name = course.getTitle();
-                intent.putExtra("Course", name);
-                startActivity(intent);
+                goBack();
             }
         });
 
     }
+
+    public void goBack() {
+        Intent intent = new Intent(AssignmentDetails.this,CourseView.class);
+        intent.putExtra("LoggedInUser",currentUser);
+        intent.putExtra("Course", mCourseId);
+        startActivity(intent);
+    }
+
 }

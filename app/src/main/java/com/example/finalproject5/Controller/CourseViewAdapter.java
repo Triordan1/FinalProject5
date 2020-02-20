@@ -51,8 +51,8 @@ public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.Vi
                 Intent intent = new Intent(mContext, AssignmentDetails.class);
                 int id = assignment.getAssignmentID();
                 intent.putExtra("Assignment", id);
-                intent.putExtra("Course", assignment.getCategoryID());
-                intent.putExtra("User", user);
+                intent.putExtra("Course", assignment.getCourseID());
+                intent.putExtra("LoggedInUser", user);
                 mContext.startActivity(intent);
             }
         });
@@ -78,5 +78,6 @@ public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.Vi
             tvDetails = itemView.findViewById(R.id.tvDetails);
         }
     }
+
 
 }
