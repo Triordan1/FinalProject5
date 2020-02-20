@@ -23,13 +23,11 @@ import com.example.finalproject5.R;
 public class AssignmentDetails extends AppCompatActivity {
 
     String score;
-    String categorySetter = "work in progress";
     String currentUser;
     int mAssignmentId;
     int mCourseId;
 
     AssignmentDao mAssignmentDao;
-    CategoryDao mCategoryDao;
     CourseDao mCourseDao;
 
     EditText etAssignment;
@@ -62,12 +60,6 @@ public class AssignmentDetails extends AppCompatActivity {
                 .assignmentDao();
         final Assignment assignment = mAssignmentDao.getAssignmentByID(mAssignmentId);
 
-        mCategoryDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.dbName)
-                .allowMainThreadQueries()
-                .build()
-                .categoryDao();
-        Category category = mCategoryDao.getCategoryByID(assignment.getCategoryID());
-
         mCourseDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
@@ -94,9 +86,7 @@ public class AssignmentDetails extends AppCompatActivity {
         tvDue = findViewById(R.id.tvDue);
 
         tvCategory = findViewById(R.id.tvCategory);
-        // needs to be fixed
-//        categorySetter = category.getTitle() + " (" + category.getWeight() + "%)";
-        tvCategory.setText(categorySetter);
+        tvCategory.setText(assignment.getCategoryID());
 
         btDelete = findViewById(R.id.btDelete);
         btEdit = findViewById(R.id.btEdit);

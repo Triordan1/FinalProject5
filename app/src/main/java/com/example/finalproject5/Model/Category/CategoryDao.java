@@ -39,4 +39,8 @@ public interface CategoryDao {
     @Query("DELETE FROM " + AppDatabase.CATEGORY_TABLE + " WHERE username = :username AND courseID = :courseID")
     void deleteFromSwipe(String username, String courseID);
 
+
+    @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE + " WHERE title = :name")
+    Category getCategoryByName(String name);
+
 }

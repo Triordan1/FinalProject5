@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;
+import com.example.finalproject5.Model.Category.Category;
+import com.example.finalproject5.Model.Category.CategoryDao;
 import com.example.finalproject5.View.CourseView;
 
 public class Create_Assignment extends AppCompatActivity {
@@ -71,7 +73,7 @@ public class Create_Assignment extends AppCompatActivity {
                 .toString().isEmpty()||AssDate.getText().toString().isEmpty()||AssDue.getText().toString().isEmpty()|| AssType.getText().toString().isEmpty()) {
             Toast.makeText(Create_Assignment.this,"Not all the required fields are completed. Please complete all.",Toast.LENGTH_LONG).show();
         }
-        else if(!(validInput(AssType.getText().toString())))
+        else if(!validInput(AssType.getText().toString()))
         {
             Toast.makeText(Create_Assignment.this,"The only valid assignment types are: Quiz,Test,HW, and Final",Toast.LENGTH_LONG).show();
         }
@@ -85,13 +87,18 @@ public class Create_Assignment extends AppCompatActivity {
             String category = AssType.getText().toString();
 
 
-            final Assignment assignment = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, currentCourseID, uDetails, currentUser);
+            final Assignment assignment1 = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, currentCourseID, category, currentUser);
+            String uCat = AssType.getText().toString();
+
 
             massignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                     .allowMainThreadQueries()
                     .build()
                     .assignmentDao();
-            Assignment assignment1 = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, courseID,category , currentUser);
+
+            Assignment assignment = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, courseID,
+                    category, currentUser);
+
             AssignmentDao cObj = AppDatabase.getAppDatabase(Create_Assignment.this).assignmentDao();
             cObj.insert(assignment1);
 
