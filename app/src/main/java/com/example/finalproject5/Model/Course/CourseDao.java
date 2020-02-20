@@ -39,6 +39,9 @@ public interface CourseDao {
     @Query("UPDATE Course SET username = :newUsername WHERE username = :givenUsername")
     void updateFromUsername(String newUsername, String givenUsername);
 
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :username AND instructor = :instructor")
+    Course getCourseUI(String username, String instructor);
+
     @Query("DELETE FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :username AND instructor = :instructor")
     void deleteFromSwipe(String username, String instructor);
 

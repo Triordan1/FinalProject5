@@ -44,6 +44,9 @@ public interface AssignmentDao {
     @Query("UPDATE Assignment SET username = :newUsername WHERE username = :givenUsername")
     void updateFromUsername(String newUsername, String givenUsername);
 
+    @Query("DELETE FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :username AND courseID = :courseID")
+    void deleteFromSwipe(String username, int courseID);
+
 }
 
 

@@ -23,6 +23,13 @@ import com.example.finalproject5.Model.Enrollment.EnrollmentDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
+/**
+ * The EditUserActivity class will edit user info such as username and first name
+ * and will allow the user to change the values.  The user will see a form with the
+ * pre-existing user values inputted into the text fields.  The user can then change
+ * the values and update the database but only after pressing the update button.
+ * @author Johnny Huynh
+ */
 
 public class EditUserActivity extends AppCompatActivity {
 
@@ -163,12 +170,17 @@ public class EditUserActivity extends AppCompatActivity {
                 newUsername = userNameEdit.getText().toString();
                 newPassword = passwordEdit.getText().toString();
 
-                //Call Update Function
+                //Call Update Function for Usernames
                 userObj.updateFromUsername(newUsername, oldUsername);
                 courseObj.updateFromUsername(newUsername, oldUsername);
                 assignObj.updateFromUsername(newUsername, oldUsername);
                 catObj.updateFromUsername(newUsername, oldUsername);
                 enrollObj.updateFromUsername(newUsername, oldUsername);
+
+                //Now Update Password, Firstname and Lastname
+                userObj.updatePassFromUser(newPassword, newUsername);
+                userObj.updateFNFromUser(newFirstname, newUsername);
+                userObj.updateLNFromUser(newLastname, newUsername);
 
                 //Toast!
                 Toast toast;

@@ -13,12 +13,24 @@ public class Category {
     private int categoryID;
 
     private String title;
+    private String courseID;
     private int weight;
     private String assignedDate;
     private int gradeID;
     private String username;
 
 
+    //Constructor
+    public Category(String title, String courseID, int weight, String assignedDate, int gradeID, String username) {
+        this.title = title;
+        this.courseID = courseID;
+        this.weight = weight;
+        this.assignedDate = assignedDate;
+        this.gradeID = gradeID;
+        this.username= username;
+    }
+
+    /*
     public Category(String title, int weight, String assignedDate, int gradeID, String username) {
         this.title = title;
         this.weight = weight;
@@ -26,6 +38,8 @@ public class Category {
         this.gradeID = gradeID;
         this.username= username;
     }
+
+     */
 
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
@@ -73,5 +87,13 @@ public class Category {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
     }
 }

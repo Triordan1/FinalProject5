@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity","onCreate called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // check database
-        //UserDatabase.getUserDatabase(MainActivity.this).loadData(this);
 
 
         ///// Testing /////
@@ -57,14 +55,36 @@ public class MainActivity extends AppCompatActivity {
         //UserJohn Info
         courseObj.insert(new Course("Mr. Brady","Economics","desc1","start1","end1","UserJohn"));
         courseObj.insert(new Course("Mrs. Obama","Chemistry","desc2","start2","end1","UserJohn"));
-        catObj.insert(new Category("Tests",60, "AsDate1", 123,"UserJohn"));
-        catObj.insert(new Category("Quizzes",20, "AsDate1", 123,"UserJohn"));
-        catObj.insert(new Category("Homework",20, "AsDate1", 123,"UserJohn"));
-        assignObj.insert(new Assignment("Test1","details", 50.00, 40.00, "1/1", "12/1", 0, "Tests", "UserJohn"));
-        assignObj.insert(new Assignment("Quiz1","details", 50.00, 40.00, "1/1", "12/1", 0, "Quizzes", "UserJohn"));
-        assignObj.insert(new Assignment("HW1","details", 50.00, 40.00, "1/1", "12/1", 0, "Homework", "UserJohn"));
+        catObj.insert(new Category("Tests", "Economics",60, "AsDate1", 123,"UserJohn"));
+        catObj.insert(new Category("Quizzes", "Economics",20, "AsDate1", 123,"UserJohn"));
+        catObj.insert(new Category("Homework", "Economics",20, "AsDate1", 123,"UserJohn"));
+        catObj.insert(new Category("Tests", "Chemistry",60, "AsDate1", 123,"UserJohn"));
+        catObj.insert(new Category("Quizzes", "Chemistry",20, "AsDate1", 123,"UserJohn"));
+        catObj.insert(new Category("Homework", "Chemistry",20, "AsDate1", 123,"UserJohn"));
+        assignObj.insert(new Assignment("Test1","details", 100.00, 70.00, "1/1", "12/1", 0, "Tests", "UserJohn"));
+        assignObj.insert(new Assignment("Quiz1","details", 100.00, 80.00, "1/1", "12/1", 0, "Quizzes", "UserJohn"));
+        assignObj.insert(new Assignment("HW1","details", 100.00, 90.00, "1/1", "12/1", 0, "Homework", "UserJohn"));
+        assignObj.insert(new Assignment("Test1","details", 100.00, 50.00, "1/1", "12/1", 1, "Tests", "UserJohn"));
+        assignObj.insert(new Assignment("Quiz1","details", 100.00, 90.00, "1/1", "12/1", 1, "Quizzes", "UserJohn"));
+        assignObj.insert(new Assignment("HW1","details", 100.00, 100.00, "1/1", "12/1", 1, "Homework", "UserJohn"));
 
-        //UserKelly
+        //UserKellu Info
+        courseObj.insert(new Course("Mr. Timmy","PE","desc1","start1","end1","UserKelly"));
+        courseObj.insert(new Course("Mrs. Little","Art","desc2","start2","end1","UserKelly"));
+        catObj.insert(new Category("Tests", "PE",60, "AsDate1", 123,"UserKelly"));
+        catObj.insert(new Category("Quizzes", "PE",20, "AsDate1", 123,"UserKelly"));
+        catObj.insert(new Category("Homework", "PE",20, "AsDate1", 123,"UserKelly"));
+        catObj.insert(new Category("Tests", "Art",60, "AsDate1", 123,"UserKelly"));
+        catObj.insert(new Category("Quizzes", "Art",20, "AsDate1", 123,"UserKelly"));
+        catObj.insert(new Category("Homework", "Art",20, "AsDate1", 123,"UserKelly"));
+        assignObj.insert(new Assignment("Test1","details", 100.00, 70.00, "1/1", "12/1", 3, "Tests", "UserKelly"));
+        assignObj.insert(new Assignment("Quiz1","details", 100.00, 80.00, "1/1", "12/1", 3, "Quizzes", "UserKelly"));
+        assignObj.insert(new Assignment("HW1","details", 100.00, 90.00, "1/1", "12/1", 3, "Homework", "UserKelly"));
+        assignObj.insert(new Assignment("Test1","details", 100.00, 50.00, "1/1", "12/1", 4, "Tests", "UserKelly"));
+        assignObj.insert(new Assignment("Quiz1","details", 100.00, 90.00, "1/1", "12/1", 4, "Quizzes", "UserKelly"));
+        assignObj.insert(new Assignment("HW1","details", 100.00, 100.00, "1/1", "12/1", 4, "Homework", "UserKelly"));
+
+
 
         AppDatabase.getAppDatabase(MainActivity.this).loadData(this);
         Button create_account_button = findViewById(R.id.create_account);

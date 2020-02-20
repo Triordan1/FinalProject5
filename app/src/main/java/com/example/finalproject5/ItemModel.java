@@ -1,5 +1,11 @@
 package com.example.finalproject5;
 
+/**
+ * A model for the items in the adapter.
+ * The "UserActivity" class will hold a list of these items
+ * and each item will hold the fields below such as courseID and className.
+ * @author Johnny Huynh
+ */
 public class ItemModel {
 
     //Fields in the item

@@ -24,6 +24,7 @@ public class Assignment {
     private String username;
 
 
+    //Default Constructor
     public Assignment(String assignmentName, String details, double maxScore, double earnedScore,
                       String assignedDate, String dueDate, int courseID, String categoryID, String username) {
         this.details = details;

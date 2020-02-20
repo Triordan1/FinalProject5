@@ -28,4 +28,7 @@ public interface CategoryDao {
 
     @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " ORDER BY categoryID DESC")
     List<Category> getAllCategories();
+
+    @Query("DELETE FROM " + AppDatabase.CATEGORY_TABLE + " WHERE username = :username AND courseID = :courseID")
+    void deleteFromSwipe(String username, String courseID);
 }

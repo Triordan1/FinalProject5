@@ -15,6 +15,12 @@ import com.example.finalproject5.View.CourseView;
 
 import java.util.List;
 
+/**
+ * An adapter class for:
+ * UserActivity,
+ * @author Johnny Huynh
+ */
+
 public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
 
     //Private Var for list of items

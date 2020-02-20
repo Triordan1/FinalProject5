@@ -43,4 +43,7 @@
     <string name="editProfile">Edit Profile</string>
     <string name="buttonUpdate">Update Profile</string>
     <string name="backButt">BackButton</string>
+    <string name="enterUse">Enter Username</string>
+    <string name="enterPas">Enter Password</string>
+    <string name="EnterButt">Enter</string>
 </resources>

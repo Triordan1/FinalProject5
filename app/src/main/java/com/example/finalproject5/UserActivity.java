@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.Assignment.AssignmentDao;
+import com.example.finalproject5.Model.Category.CategoryDao;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.User.User;
@@ -24,11 +26,20 @@ import com.example.finalproject5.Model.User.UserDao;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is the UserActivity.  It will list the user's courses in a Recycler View.
+ * Each Course item will have its' Class name, class instructor and the users current grade.
+ * @author Johnny Huynh
+ *
+ */
+
 public class UserActivity extends AppCompatActivity {
 
     //Table Objects
     UserDao userObj;
     CourseDao courseObj;
+    AssignmentDao assignObj;
+    CategoryDao catObj;
 
     //Create RecyclerView
     private RecyclerView recyclerView;
@@ -43,9 +54,12 @@ public class UserActivity extends AppCompatActivity {
     String sentFirstName;
     String sentLastName;
 
-    //Temp Transfer Variables
+    //Temp Variables
     String tempUsername;
     String tempInstructor;
+    int tempID;
+    String tempCourseName;
+
 
     //Puts items into appbar
     @Override
@@ -178,7 +192,11 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
-    //Remove from list by swiping right
+
+    /**
+     * This is for when users swipe right on the item, AKA course.
+     * Swiping Right will delete the course and the corresponding entities from the connected tables.
+     */
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -195,11 +213,21 @@ public class UserActivity extends AppCompatActivity {
             tempUsername = tempItem.getUsername();
             tempInstructor = tempItem.getClassInstructor();
 
-            //Delete From database
+            //Return Course ID, Note* in the event of duplicates, it will remove
+            Course tempCourse = courseObj.getCourseUI(tempUsername, tempInstructor);
+
+            //Get CourseID for assignments and categories
+            tempID = tempCourse.getCourseID();
+
+            //Get Course Name
+            tempCourseName = tempCourse.getTitle();
+
+            //Delete From Course Table
             courseObj.deleteFromSwipe( tempUsername, tempInstructor);
 
-            //Now Delete from corresponding tables: Assignments, Categories, Enrollment(?)
-
+            //Now Delete from corresponding tables: Assignments, Categories
+            assignObj.deleteFromSwipe(tempUsername, tempID);
+            catObj.deleteFromSwipe(tempUsername, tempCourseName);
 
             //This just removes it from the view
             listItems.remove(viewHolder.getAdapterPosition());
