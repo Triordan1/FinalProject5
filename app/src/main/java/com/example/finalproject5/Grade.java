@@ -6,6 +6,7 @@ import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Category.Category;
 
+import java.text.Format;
 import java.util.List;
 
 public class Grade {
@@ -21,17 +22,19 @@ public class Grade {
         double hwgrade;
         double finalgrade;
 
-        testgrade =gradeType(username,courseID,"Test", context);
-        quizgrade =gradeType(username,courseID,"Quiz", context);
-        hwgrade = gradeType(username,courseID,"HW", context);
-        finalgrade = gradeType(username,courseID,"Final", context);
+        testgrade =(double) gradeType(username,courseID,"Test", context);
+        quizgrade =(double)gradeType(username,courseID,"Quiz", context);
+        hwgrade =(double) gradeType(username,courseID,"HW", context);
+        finalgrade = (double)gradeType(username,courseID,"Final", context);
 
-        testgrade = testgrade *(0.20);
-        quizgrade = quizgrade *(0.20);
-        hwgrade = hwgrade*(0.40);
-        finalgrade = finalgrade *(0.20);
+        testgrade = (double)testgrade *(20);
+        quizgrade =(double) quizgrade *(20);
+        hwgrade =(double) hwgrade*(40);
+        finalgrade = (double)finalgrade *(20);
 
-        grade= (testgrade+quizgrade+hwgrade+finalgrade)*100;
+        grade= (double)(testgrade+quizgrade+hwgrade+finalgrade);
+
+
 
 
         return grade;
@@ -39,7 +42,7 @@ public class Grade {
     }
 
     private double gradeType(String username, int courseID, String type,Context context) {
-        double grade=0;
+         double grade;
         // hold max grade and earned for each assignment
         int maxScore=0;
         int scoreEarnd=0;
@@ -55,8 +58,8 @@ public class Grade {
             }
 
             grade = (double) scoreEarnd/maxScore;
-
             return grade;
+
         }else {
             return 1 ;
         }

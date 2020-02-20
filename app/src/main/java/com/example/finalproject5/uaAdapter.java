@@ -88,8 +88,10 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
         public TextView tvgrade;
         public LinearLayout linearLayout;
 
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
             context = itemView.getContext();
 
             //Connect textfields within items themselves
