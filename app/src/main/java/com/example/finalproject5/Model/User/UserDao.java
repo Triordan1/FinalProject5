@@ -29,4 +29,19 @@ public interface UserDao {
 
     @Query("select * from " + AppDatabase.USER_TABLE + " where username = :username and password= :password")
     User login(String username, String password);
+
+    @Query("UPDATE User SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
+    @Query("UPDATE User SET password = :newPassword WHERE username = :newUsername")
+    void updatePassFromUser(String newPassword, String newUsername);
+
+    @Query("UPDATE User SET firstName = :newFN WHERE username = :newUsername")
+    void updateFNFromUser(String newFN, String newUsername);
+
+    @Query("UPDATE User SET lastName = :newLN WHERE username = :newUsername")
+    void updateLNFromUser(String newLN, String newUsername);
+
+    @Query("select * from " + AppDatabase.USER_TABLE + " where username = :username")
+    User getUserFromName(String username);
 }

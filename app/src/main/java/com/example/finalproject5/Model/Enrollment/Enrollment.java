@@ -3,11 +3,7 @@ package com.example.finalproject5.Model.Enrollment;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.finalproject5.Model.Course.Course;
-import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.AppDatabase;
-
-import java.util.Date;
 
 /** This class is the entity used to hold the enrollment details. */
 

@@ -11,16 +11,41 @@ import java.util.List;
 public class Grade {
 
 
-    private double getCategoryGrade(Context context, String username, Category category, int courseID) {
-        double grade =0;
 
+
+    public double getGrade(Context context,String username,int courseID){
+
+        double grade =0;
+        double testgrade;
+        double quizgrade;
+        double hwgrade;
+        double finalgrade;
+
+        testgrade =gradeType(username,courseID,"Test", context);
+        quizgrade =gradeType(username,courseID,"Quiz", context);
+        hwgrade = gradeType(username,courseID,"HW", context);
+        finalgrade = gradeType(username,courseID,"Final", context);
+
+        testgrade = testgrade *(0.20);
+        quizgrade = quizgrade *(0.20);
+        hwgrade = hwgrade*(0.40);
+        finalgrade = finalgrade *(0.20);
+
+        grade= (testgrade+quizgrade+hwgrade+finalgrade)*100;
+
+
+        return grade;
+
+    }
+
+    private double gradeType(String username, int courseID, String type,Context context) {
+        double grade=0;
         // hold max grade and earned for each assignment
         int maxScore=0;
         int scoreEarnd=0;
-        double weight ;
 
         // get list of all Assignments for this category
-        List<Assignment> assignments = AppDatabase.getAppDatabase(context).assignmentDao().getAll(username,category.getTitle(),courseID);
+        List<Assignment> assignments = AppDatabase.getAppDatabase(context).assignmentDao().getAll(username, type,courseID);
 
         if(assignments.size()!=0){
 
@@ -28,33 +53,14 @@ public class Grade {
                 scoreEarnd += asg.getEarnedScore();
                 maxScore += asg.getMaxScore();
             }
-            weight= (double)category.getWeight()/100;
+
             grade = (double) scoreEarnd/maxScore;
-            grade = grade* weight;
+
             return grade;
         }else {
-            return grade ;
+            return 1 ;
         }
 
+
     }
-
-
-    public double getGrade(Context context,String username,int courseID){
-
-        double grade=0;
-        double score;
-        // get list of all categories for this user
-        List<Category> categories = AppDatabase.getAppDatabase(context).categoryDao().getAllCategories(username,courseID);
-        if (categories.size()!= 0 ){
-            /// get grade for each category and add it to running total
-            for (Category cat: categories) {
-
-                score = getCategoryGrade(context ,username, cat, courseID );
-                grade = grade + score;
-            }
-            return grade * 100;
-        }else {
-            return 0;
-        }
     }
-}

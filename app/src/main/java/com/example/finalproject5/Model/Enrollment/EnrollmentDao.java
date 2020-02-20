@@ -25,4 +25,7 @@ public interface EnrollmentDao {
 
     @Query("SELECT * FROM " + AppDatabase.ENROLLMENT_TABLE  + " ORDER BY enrollmentID DESC")
     List<Enrollment> getAllClassEnrollments();
+
+    @Query("UPDATE enrollment SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
 }

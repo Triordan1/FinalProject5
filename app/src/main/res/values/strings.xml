@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FinalProject5</string>
     <string name="title_activity_create__class">Create_Class</string>
-    <string name="create_class">Create Class</string>
+    <string name="create_class">Create Course</string>
     <string name="end_date">End date</string>
     <string name="start_date">Start Date</string>
     <string name="name">Name</string>
@@ -28,4 +28,22 @@
     <string name="register">Register</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+
+    <string name="title_text">Title Text</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="editUser">Edit User</string>
+    <string name="editFirstname">New First Name</string>
+    <string name="editLastname">New Last Name</string>
+    <string name="editPass">New Password</string>
+    <string name="editUsername">New Username</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="usernameView">Username</string>
+    <string name="passwordView">Password</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="buttonUpdate">Update Profile</string>
+    <string name="backButt">BackButton</string>
+    <string name="enterUse">Enter Username</string>
+    <string name="enterPas">Enter Password</string>
+    <string name="EnterButt">Enter</string>
 </resources>

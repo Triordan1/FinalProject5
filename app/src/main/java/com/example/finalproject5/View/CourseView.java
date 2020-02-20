@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.finalproject5.Controller.CourseViewAdapter;
 import com.example.finalproject5.Create_Assignment;
@@ -25,7 +24,6 @@ import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.R;
 import com.example.finalproject5.UserActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /** This class is used as the holder for our recycler view and the base of our course view page. */
@@ -40,15 +38,15 @@ public class CourseView extends AppCompatActivity {
     CourseDao mCourseDao;
 
     String currentUser;
-    String courseName;
+    int courseName;
     Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_view);
 
-        currentUser = getIntent().getStringExtra("User");
-        courseName = String.valueOf(getIntent().getIntExtra("Course", 0));
+        currentUser = getIntent().getStringExtra("LoggedInUser");
+        courseName = getIntent().getIntExtra("Course", 0);
         mCourseDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
@@ -56,7 +54,6 @@ public class CourseView extends AppCompatActivity {
 
         final Course course = mCourseDao.getCourseFromID(courseName);
 
-        //delete this
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +73,7 @@ public class CourseView extends AppCompatActivity {
         btAdd = findViewById(R.id.btAdd);
         tvCourseName.setText(course.getTitle());
 
-        mAdapter = new CourseViewAdapter(mAssignments);
+        mAdapter = new CourseViewAdapter(getApplicationContext(),mAssignments,currentUser);
 
         rvAssignments.setAdapter(mAdapter);
         rvAssignments.setLayoutManager(new LinearLayoutManager(this));
@@ -99,7 +96,11 @@ public class CourseView extends AppCompatActivity {
                             Intent intent = new Intent(CourseView.this, Create_Assignment.class);
                             intent.putExtra("LoggedInUser",currentUser);
 
+
                             intent.putExtra("courseID",course.getCourseID());
+
+                            intent.putExtra("Course",courseName);
+
                             startActivity(intent);
                         }
                     }

@@ -9,9 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Create_Assignment"></activity>
+        <activity android:name=".Login2Activity"></activity>
+        <activity android:name=".View.AssignmentDetails"></activity>
+        <activity
+            android:name=".EditUserActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Create_Assignment" />
         <activity android:name=".View.CourseView" />
-        <activity android:name=".UserActivity" />
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_text"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Create_Class"
             android:label="@string/title_activity_create__class"

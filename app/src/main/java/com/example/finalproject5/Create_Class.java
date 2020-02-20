@@ -7,7 +7,6 @@ import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
 
 import android.view.View;

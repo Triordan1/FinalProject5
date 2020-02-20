@@ -34,5 +34,15 @@ public interface CourseDao {
     List<Course> getAllCoursesWithUser(String user);
 
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE courseID = :id")
-    Course getCourseFromID(String id);
+    Course getCourseFromID(int id);
+
+    @Query("UPDATE Course SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :username AND instructor = :instructor")
+    Course getCourseUI(String username, String instructor);
+
+    @Query("DELETE FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :username AND instructor = :instructor")
+    void deleteFromSwipe(String username, String instructor);
+
 }

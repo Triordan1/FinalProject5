@@ -3,9 +3,8 @@ package com.example.finalproject5.Model.Category;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import com.example.finalproject5.Model.AppDatabase;
 
-import java.util.Date;
+import com.example.finalproject5.Model.AppDatabase;
 
 /** This class is the entity used to hold the category details. */
 
@@ -16,17 +15,21 @@ public class Category {
     private int courseID;
 
     private String title;
+
     private int weight;
     private String assignedDate;
     private int gradeID;
     private String username;
 
 
-    public Category(String title, int weight, String assignedDate, int gradeID, String username, int courseID) {
+    //Constructor
+    public Category(String title, int courseID, int weight, String assignedDate, int gradeID, String username) {
+
         this.title = title;
         this.weight = weight;
         this.assignedDate = assignedDate;
         this.gradeID = gradeID;
+
         this.username= username;
         this.courseID= courseID;
     }
@@ -53,7 +56,7 @@ public class Category {
 
     public void setCourseID(int courseID) {
         this.courseID = courseID;
-    }
+}
 
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
@@ -102,4 +105,6 @@ public class Category {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 }

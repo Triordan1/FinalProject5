@@ -1,6 +1,5 @@
 package com.example.finalproject5;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,15 +18,15 @@ import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
 import static com.example.finalproject5.MainActivity.user;
-//import com.example.finalproject5.Model.UserDatabase;
 import com.example.finalproject5.Model.AppDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
+        user=null;
         Log.d("login", "oncreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Button loginButton = findViewById(R.id.login);
+        Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,12 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                         //inform user login was a success
                         Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
 
-                        //Testing by adding 2 course entries to user "Rodrigo" *Note: This will run everytime you run the login button and there is a user
-                       /* Deprecated tests
-                        CourseDao cObj = AppDatabase.getAppDatabase(LoginActivity.this).courseDao();
-                        cObj.insert(new Course("Rodrigo","CST438","class1","desc1","start1","Rodrigo"));
-                        cObj.insert(new Course("Rodrigo","teacher2","class2","desc2","start2","Rodrigo"));
-                        */
                         //Get Username from table object
                         String loginUser = user.getUsername();
 

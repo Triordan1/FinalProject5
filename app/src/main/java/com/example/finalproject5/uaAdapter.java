@@ -1,6 +1,5 @@
 package com.example.finalproject5;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -16,11 +15,20 @@ import com.example.finalproject5.View.CourseView;
 
 import java.util.List;
 
+/**
+ * An adapter class for:
+ * UserActivity,
+ * @author Johnny Huynh
+ */
+
 public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
 
     //Private Var for list of items
     private List<ItemModel> listItems;
     private Context context;
+
+    //Var for sending extras
+    String sentCourseTitle;
 
     //Constructor for item list
     public uaAdapter (List<ItemModel> itemList, Context context) {
@@ -57,7 +65,7 @@ public class uaAdapter extends RecyclerView.Adapter<uaAdapter.MyViewHolder> {
             public void onClick(View v) {
                 //Make intent for moving screens
                 Intent intent = new Intent(context, CourseView.class);
-                intent.putExtra("User", UserActivity.currentUser);
+                intent.putExtra("LoggedInUser", UserActivity.currentUser);
                 intent.putExtra("Course", currentList.getCourseID());
                 //Switches screen
                 context.startActivity(intent);

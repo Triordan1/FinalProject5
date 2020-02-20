@@ -1,6 +1,7 @@
 package com.example.finalproject5;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
@@ -25,7 +28,13 @@ public class Create_Assignment extends AppCompatActivity {
     Button AssCreate;
     Button AssCancel;
     static String currentUser;
+
     static int currentCourseID;
+
+    static int courseID;
+
+    AssignmentDao massignmentDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +49,8 @@ public class Create_Assignment extends AppCompatActivity {
         AssCancel = findViewById(R.id.AssCancel);
         AssType = findViewById(R.id.AssType);
         currentUser = getIntent().getStringExtra("LoggedInUser");
+        courseID = getIntent().getIntExtra("Course",0);
+
         AssCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +71,7 @@ public class Create_Assignment extends AppCompatActivity {
                 .toString().isEmpty()||AssDate.getText().toString().isEmpty()||AssDue.getText().toString().isEmpty()|| AssType.getText().toString().isEmpty()) {
             Toast.makeText(Create_Assignment.this,"Not all the required fields are completed. Please complete all.",Toast.LENGTH_LONG).show();
         }
-        else if(validInput(AssType.getText().toString()))
+        else if(!(validInput(AssType.getText().toString())))
         {
             Toast.makeText(Create_Assignment.this,"The only valid assignment types are: Quiz,Test,HW, and Final",Toast.LENGTH_LONG).show();
         }
@@ -71,11 +82,19 @@ public class Create_Assignment extends AppCompatActivity {
             double uEarned = Double.parseDouble(AssEarned.getText().toString());
             String uDate = AssDate.getText().toString();
             String uDue = AssDue.getText().toString();
+            String category = AssType.getText().toString();
 
 
             final Assignment assignment = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, currentCourseID, uDetails, currentUser);
+
+            massignmentDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
+                    .allowMainThreadQueries()
+                    .build()
+                    .assignmentDao();
+            Assignment assignment1 = new Assignment(uName, uDetails, uMax, uEarned, uDate, uDue, courseID,category , currentUser);
             AssignmentDao cObj = AppDatabase.getAppDatabase(Create_Assignment.this).assignmentDao();
-            cObj.insert(assignment);
+            cObj.insert(assignment1);
+
             goBack();
         }
 
@@ -92,6 +111,7 @@ public class Create_Assignment extends AppCompatActivity {
     {
         Intent intent = new Intent(Create_Assignment.this, CourseView.class);
         intent.putExtra("LoggedInUser",currentUser);
+        intent.putExtra("Course",courseID);
         startActivity(intent);
     }
 }
