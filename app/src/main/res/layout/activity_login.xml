@@ -15,7 +15,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/username" />
+        android:text="@string/username"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -25,7 +27,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/password" />
+        android:text="@string/password"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -34,9 +38,10 @@
         android:id="@+id/password" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:id="@+id/login" />
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/login" />
 
 </LinearLayout>

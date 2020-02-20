@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,11 +30,15 @@ public class MainActivity extends AppCompatActivity {
     CategoryDao catObj;
     EnrollmentDao enrollObj;
 
+    TextView tvMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MainActivity","onCreate called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tvMain = findViewById(R.id.welcome);
 
 
         ///// Testing /////
