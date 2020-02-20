@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
+/** This class is the data access object used to access the category class. */
+
 @Dao
 public interface CategoryDao {
     @Insert
@@ -20,6 +22,9 @@ public interface CategoryDao {
 
     @Delete
     void delete(Category category);
+
+    @Query("UPDATE Category SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
 
     @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " ORDER BY categoryID DESC")
     List<Category> getAllCategories();

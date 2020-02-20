@@ -15,15 +15,17 @@ import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.Enrollment.Enrollment;
 import com.example.finalproject5.Model.Enrollment.EnrollmentDao;
-import com.example.finalproject5.Model.Grade.Grade;
-import com.example.finalproject5.Model.Grade.GradeDao;
+import com.example.finalproject5.Model.Instructor.Instructor;
+import com.example.finalproject5.Model.Instructor.InstructorDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
 import java.util.List;
 
-@Database(entities = {User.class, Course.class, Assignment.class, Category.class, Grade.class,
-        Enrollment.class}, version = 2,exportSchema = false)
+/** This class is the database used to access and link each of our tables within the database. */
+
+@Database(entities = {User.class, Course.class, Assignment.class, Category.class,
+        Enrollment.class, Instructor.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
@@ -53,10 +55,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private void loadusers(Context context){
         UserDao dao = getAppDatabase(context).dao();
-        User rodrigo= new User("rod","pass", "Rod", "Lastname");
-        User john= new User("name","pass", "John", "Smith");
+        User rodrigo= new User("Rodrigo","pass", "Roddy", "White");
         dao().insert(rodrigo);
-        dao().insert(john);
     }
 
 
@@ -65,13 +65,14 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final String COURSE_TABLE="course";
     public static final String ASSIGNMENT_TABLE="assignment";
     public static final String CATEGORY_TABLE="category";
-    public static final String GRADE_TABLE="grade";
+    public static final String GRADE_TABLE="Grade";
     public static final String ENROLLMENT_TABLE="enrollment";
+    public static final String INSTRUCTOR_TABLE="instructor";
 
     public abstract CourseDao courseDao();
     public abstract AssignmentDao assignmentDao();
     public abstract CategoryDao categoryDao();
-    public abstract GradeDao gradeDao();
     public abstract EnrollmentDao enrollmentDao();
+    public abstract InstructorDao instructorDao();
 
 }

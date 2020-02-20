@@ -1,21 +1,18 @@
 package com.example.finalproject5;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.finalproject5.Model.AppDatabase;
-import com.example.finalproject5.Model.Course.Course;
-import com.example.finalproject5.Model.Course.CourseDao;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.room.Room;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.Model.Course.Course;
+import com.example.finalproject5.Model.Course.CourseDao;
 
 public class Create_Class extends AppCompatActivity {
 
@@ -28,6 +25,7 @@ public class Create_Class extends AppCompatActivity {
     EditText sDate;
     EditText eDate;
     CourseDao mCourseDao;
+    static String currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,13 @@ public class Create_Class extends AppCompatActivity {
         cProf = findViewById(R.id.classProf);
         sDate = findViewById(R.id.classSDate);
         eDate = findViewById(R.id.ClassEDate);
-        mCourseDao = Room.databaseBuilder(this, AppDatabase.class,AppDatabase.dbName)
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null)
+        {
+            currentUser = extras.getString("LoggedInUser");
+        }
+        mCourseDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.dbName)
                 .allowMainThreadQueries()
                 .build()
                 .courseDao();
@@ -47,6 +51,12 @@ public class Create_Class extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addClass();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
             }
         });
     }
@@ -60,16 +70,19 @@ public class Create_Class extends AppCompatActivity {
             String userProf = cProf.getText().toString();
             String userS = sDate.getText().toString();
             String userE = eDate.getText().toString();
-
-            //For now removed
-
-            /*
-            final Course newCourse = new Course(userProf,userN,userNum,userS,userE);
-            mCourseDao.insert(newCourse);
-
-             */
+            //fixed
+            final Course newCourse = new Course(userProf,userN,userNum,userS,userE,currentUser);
+            CourseDao cObj = AppDatabase.getAppDatabase(Create_Class.this).courseDao();
+            cObj.insert(newCourse);
+            goBack();
         }
 
+    }
+    public void goBack()
+    {
+        Intent intent = new Intent(Create_Class.this, UserActivity.class);
+        intent.putExtra("LoggedInUser",currentUser);
+        startActivity(intent);
     }
 
 

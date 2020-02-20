@@ -1,44 +1,32 @@
 package com.example.finalproject5.Model.Course;
 
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.AppDatabase;
 
-import java.util.Date;
+/** This class is the entity used to hold the course details. */
 
 @Entity(tableName = AppDatabase.COURSE_TABLE) // This will work once the database is changed
 public class Course {
     @PrimaryKey(autoGenerate = true)//this will change back to normal after implementation of the database
     private int courseID;
 
-    @ColumnInfo(name = "userCol")
-    private String user;
-
-    @ColumnInfo(name = "instructorCol")
     private String instructor;
-
-    @ColumnInfo(name = "titleCol")
     private String title;
-
-    @ColumnInfo(name = "descCol")
     private String description;
-
-    @ColumnInfo(name = "startCol")
     private String startDate;
-
-    @ColumnInfo(name = "endCol")
     private String endDate;
+    private String username;
 
-    public Course(String user, String instructor, String title, String description, String startDate, String endDate) {
-        this.user = user;
+    public Course(String instructor, String title, String description, String startDate, String endDate, String username) {
         this.instructor = instructor;
         this.title = title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.username = username;
     }
 
     public void setCourseID(int courseID) {
@@ -47,14 +35,6 @@ public class Course {
 
     public int getCourseID() {
         return courseID;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
     }
 
     public String getInstructor() {
@@ -77,4 +57,31 @@ public class Course {
         return endDate;
     }
 
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

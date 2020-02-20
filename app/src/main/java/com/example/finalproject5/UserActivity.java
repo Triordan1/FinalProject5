@@ -1,24 +1,25 @@
 package com.example.finalproject5;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
+import com.example.finalproject5.Model.User.User;
+import com.example.finalproject5.Model.User.UserDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.List;
 public class UserActivity extends AppCompatActivity {
 
     //Table Objects
+    UserDao userObj;
     CourseDao courseObj;
 
     //Create RecyclerView
@@ -40,6 +42,10 @@ public class UserActivity extends AppCompatActivity {
     String currentUser;
     String sentFirstName;
     String sentLastName;
+
+    //Temp Transfer Variables
+    String tempUsername;
+    String tempInstructor;
 
     //Puts items into appbar
     @Override
@@ -57,7 +63,7 @@ public class UserActivity extends AppCompatActivity {
             //Add Button
             case R.id.itemAdd:
                 //For now it sends to MainActivity, will send to CreateClassPage in the future
-                Intent intentUserToCourse = new Intent(UserActivity.this, MainActivity.class);
+                Intent intentUserToCourse = new Intent(UserActivity.this, Create_Class.class);
                 startActivity(intentUserToCourse);
                 return true;
 
@@ -99,13 +105,22 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        //Create table DB instances
+        userObj = AppDatabase.getAppDatabase(UserActivity.this).dao();
+        courseObj = AppDatabase.getAppDatabase(UserActivity.this).courseDao();
+
         //Get Current User Logged in from intent extras
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             currentUser = extras.getString("LoggedInUser");
-            sentFirstName = extras.getString("LoggedFirstName");
-            sentLastName = extras.getString("LoggedLastName");
         }
+
+        //Get user from table
+        User tempUser = userObj.getUserFromName(currentUser);
+
+        //Get from Getters
+        sentFirstName = tempUser.getFirstName();
+        sentLastName = tempUser.getLastName();
 
         //Create String for full name
         String fullname = "Student: " + sentFirstName + " " + sentLastName;
@@ -116,9 +131,6 @@ public class UserActivity extends AppCompatActivity {
         //Create Toolbar
         Toolbar uaToolbar = (Toolbar) findViewById(R.id.uaActivity_toolbar);
         setSupportActionBar(uaToolbar);
-
-        //Create table DB instances
-        courseObj = AppDatabase.getAppDatabase(UserActivity.this).courseDao();
 
         //Connect RecyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -139,8 +151,12 @@ public class UserActivity extends AppCompatActivity {
         //Specify Adapter
         recAdapter = new uaAdapter(listItems, this);
 
+        //Swipe
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+
         //Set Adapter to Recycler View
         recyclerView.setAdapter(recAdapter);
+
 
     }
 
@@ -150,11 +166,50 @@ public class UserActivity extends AppCompatActivity {
         //Get all courses
         List<Course> userCourses = courseObj.getAllCoursesWithUser(findUser);
 
+        //Grade from Rod
+        Grade gradeGet = new Grade();
+        double grade= gradeGet.getGrade(UserActivity.this,findUser);
+
         //Loop through all courses with user name
         for (Course tempCourse: userCourses) {
             //Create a new item list Entry
-            ItemModel singleItem = new ItemModel(tempCourse.getTitle(), tempCourse.getInstructor());
+            ItemModel singleItem = new ItemModel(tempCourse.getCourseID(), tempCourse.getTitle(), tempCourse.getInstructor(), grade,tempCourse.getUsername());
             listItems.add(singleItem);
         }
     }
+
+    //Remove from list by swiping right
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            //Get Swiped Position
+            int position = viewHolder.getAdapterPosition();
+
+            //Get info from list
+            ItemModel tempItem = listItems.get(position);
+            tempUsername = tempItem.getUsername();
+            tempInstructor = tempItem.getClassInstructor();
+
+            //Delete From database
+            courseObj.deleteFromSwipe( tempUsername, tempInstructor);
+
+            //Now Delete from corresponding tables: Assignments, Categories, Enrollment(?)
+
+
+            //This just removes it from the view
+            listItems.remove(viewHolder.getAdapterPosition());
+            recAdapter.notifyDataSetChanged();
+
+            //Toast Tell User Course was deleted
+            Toast toast;
+            toast = Toast.makeText(getApplicationContext(), "Course Deleted!" , Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+        }
+    };
 }

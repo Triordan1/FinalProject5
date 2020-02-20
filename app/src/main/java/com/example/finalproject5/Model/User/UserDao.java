@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
+/** This class is the data access object used to access the user class. */
+
 @Dao
 public interface UserDao {
 
@@ -27,4 +29,10 @@ public interface UserDao {
 
     @Query("select * from " + AppDatabase.USER_TABLE + " where username = :username and password= :password")
     User login(String username, String password);
+
+    @Query("UPDATE User SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
+    @Query("select * from " + AppDatabase.USER_TABLE + " where username = :username")
+    User getUserFromName(String username);
 }

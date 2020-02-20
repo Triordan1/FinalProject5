@@ -3,11 +3,9 @@ package com.example.finalproject5.Model.Grade;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.finalproject5.Model.Assignment.Assignment;
-import com.example.finalproject5.Model.Course.Course;
-import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.AppDatabase;
-import com.example.finalproject5.Model.*;
+
+/** This class is the entity used to hold the grade details. */
 
 @Entity(tableName = AppDatabase.GRADE_TABLE)
 public class Grade {

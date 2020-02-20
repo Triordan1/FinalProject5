@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
+/** This class is the data access object used to access the course class. */
+
 @Dao
 public interface CourseDao {
 
@@ -25,9 +27,19 @@ public interface CourseDao {
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE  + " ORDER BY courseID DESC")
     List<Course> getAllCourses();
 
-    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE titleCol = :title")
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE title = :title")
     Course getCourseFromTitle(String title);
 
-    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE userCol = :user")
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :user")
     List<Course> getAllCoursesWithUser(String user);
+
+    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE courseID = :id")
+    Course getCourseFromID(String id);
+
+    @Query("UPDATE Course SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
+    @Query("DELETE FROM " + AppDatabase.COURSE_TABLE + " WHERE username = :username AND instructor = :instructor")
+    void deleteFromSwipe(String username, String instructor);
+
 }

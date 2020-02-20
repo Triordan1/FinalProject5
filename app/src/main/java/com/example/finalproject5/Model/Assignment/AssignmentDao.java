@@ -10,6 +10,8 @@ import com.example.finalproject5.Model.AppDatabase;
 
 import java.util.List;
 
+/** This class is the data access object used to access the assignment class. */
+
 @Dao
 public interface AssignmentDao {
     @Insert
@@ -23,6 +25,25 @@ public interface AssignmentDao {
 
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE  + " ORDER BY assignmentID DESC")
     List<Assignment> getAllAssignments();
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllTest(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllQuiz(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getAllHw(String username, String categoryID);
+
+    @Query("select * from " + AppDatabase.ASSIGNMENT_TABLE + " where username = :username and categoryID = :categoryID")
+    List<Assignment> getFinal(String username, String categoryID);
+
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE username = :user and courseID = :courseID")
+    List<Assignment> getAllCourseAssignments(String user, String courseID);
+
+    @Query("UPDATE Assignment SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
 }
 
 
