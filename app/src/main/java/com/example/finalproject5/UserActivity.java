@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
@@ -23,6 +26,8 @@ public class UserActivity extends AppCompatActivity {
     //Create RecyclerView
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recAdapter;
+
+    Button logout;
 
     //Create List for itemModel
     List<ItemModel> listItems;
@@ -42,6 +47,14 @@ public class UserActivity extends AppCompatActivity {
         //Connect RecyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
+        logout = findViewById(R.id.logoutmain);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lo();
+            }
+        });
         //Set fixed size for items
         recyclerView.setHasFixedSize(true);
 
@@ -82,5 +95,9 @@ public class UserActivity extends AppCompatActivity {
             ItemModel singleItem = new ItemModel(tempCourse.getCourseID(), tempCourse.getTitle(), tempCourse.getInstructor(),grade);
             listItems.add(singleItem);
         }
+    }
+    public void lo(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
