@@ -54,7 +54,7 @@ public class CourseView extends AppCompatActivity {
                 .build()
                 .courseDao();
 
-        Course course = mCourseDao.getCourseFromID(courseName);
+        final Course course = mCourseDao.getCourseFromID(courseName);
 
         //delete this
         backButton = findViewById(R.id.backButton);
@@ -98,6 +98,8 @@ public class CourseView extends AppCompatActivity {
                             //create intent to go to add assignment
                             Intent intent = new Intent(CourseView.this, Create_Assignment.class);
                             intent.putExtra("LoggedInUser",currentUser);
+
+                            intent.putExtra("courseID",course.getCourseID());
                             startActivity(intent);
                         }
                     }
