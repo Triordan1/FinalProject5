@@ -23,9 +23,15 @@ public interface CategoryDao {
     @Delete
     void delete(Category category);
 
+    @Query("UPDATE Category SET username = :newUsername WHERE username = :givenUsername")
+    void updateFromUsername(String newUsername, String givenUsername);
+
     @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE  + " ORDER BY categoryID DESC")
     List<Category> getAllCategories();
 
     @Query("SELECT * FROM " + AppDatabase.CATEGORY_TABLE + " WHERE categoryID = :id")
     Category getCategoryByID(String id);
+
+    @Query("DELETE FROM " + AppDatabase.CATEGORY_TABLE + " WHERE username = :username AND courseID = :courseID")
+    void deleteFromSwipe(String username, String courseID);
 }

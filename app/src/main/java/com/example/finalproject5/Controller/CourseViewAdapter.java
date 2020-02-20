@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.R;
 import com.example.finalproject5.View.AssignmentDetails;
-import com.example.finalproject5.View.CourseView;
 
 import java.util.List;
 

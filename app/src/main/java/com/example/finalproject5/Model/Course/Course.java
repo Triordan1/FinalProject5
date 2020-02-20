@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import com.example.finalproject5.Model.AppDatabase;
 
-import java.util.Date;
+/** This class is the entity used to hold the course details. */
 
 /** This class is the entity used to hold the course details. */
 

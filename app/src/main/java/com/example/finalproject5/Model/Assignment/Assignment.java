@@ -4,11 +4,7 @@ package com.example.finalproject5.Model.Assignment;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.finalproject5.Model.Category.Category;
-import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.AppDatabase;
-
-import java.util.Date;
 
 /** This class is the entity used to hold the assignment details. */
 
@@ -28,6 +24,7 @@ public class Assignment {
     private String username;
 
 
+    //Default Constructor
     public Assignment(String assignmentName, String details, double maxScore, double earnedScore,
                       String assignedDate, String dueDate, int courseID, String categoryID, String username) {
         this.details = details;

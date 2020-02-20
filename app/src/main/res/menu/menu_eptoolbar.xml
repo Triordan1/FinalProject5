@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".EditUserActivity">
+
+    <item
+        android:id="@+id/itemBack"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:title="@string/backButt"
+        app:showAsAction="always">
+
+    </item>
+
+    <item
+        android:id="@+id/itemLast"
+        android:icon="@drawable/ic_uaiconmore"
+        android:title="@string/sign_out"
+        app:showAsAction="never">
+
+    </item>
+
+
+
+</menu>

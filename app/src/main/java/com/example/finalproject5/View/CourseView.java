@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.finalproject5.Controller.CourseViewAdapter;
 import com.example.finalproject5.Create_Assignment;
@@ -25,7 +24,6 @@ import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.R;
 import com.example.finalproject5.UserActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /** This class is used as the holder for our recycler view and the base of our course view page. */
