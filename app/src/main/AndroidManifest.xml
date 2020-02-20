@@ -5,18 +5,22 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Grade Checker"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditUserActivity"></activity>
-        <activity android:name=".TestCourseAct" />
+        <activity
+            android:name=".EditUserActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Create_Assignment" />
+        <activity android:name=".View.CourseView" />
         <activity
             android:name=".UserActivity"
-            android:label="@string/title_text" />
+            android:label="@string/title_text"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Create_Class"
-            android:label="CREATE A CLASS"
+            android:label="@string/title_activity_create__class"
             android:theme="@style/AppTheme" />
         <activity android:name=".CreateAccountInfo" />
         <activity android:name=".MainActivity">
