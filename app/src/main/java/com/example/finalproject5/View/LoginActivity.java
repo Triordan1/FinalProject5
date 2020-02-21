@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,16 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.finalproject5.Model.Course.Course;
-import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
 
-import static com.example.finalproject5.MainActivity.user;
+import static com.example.finalproject5.View.MainActivity.user;
 import com.example.finalproject5.Model.AppDatabase;
+import com.example.finalproject5.R;
+import com.example.finalproject5.UserActivity;
 
 public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {

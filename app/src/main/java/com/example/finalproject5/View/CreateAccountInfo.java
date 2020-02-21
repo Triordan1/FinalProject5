@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
+import com.example.finalproject5.R;
 
 public class CreateAccountInfo extends AppCompatActivity {
 
@@ -41,7 +42,7 @@ public class CreateAccountInfo extends AppCompatActivity {
     }
 
     public void goBack(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     public void addingUser(){

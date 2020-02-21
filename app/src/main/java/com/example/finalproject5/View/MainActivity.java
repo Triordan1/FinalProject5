@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +10,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject5.Model.AppDatabase;
-import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;
-import com.example.finalproject5.Model.Category.Category;
 import com.example.finalproject5.Model.Category.CategoryDao;
-import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.Enrollment.EnrollmentDao;
-import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
+import com.example.finalproject5.R;
 
 public class MainActivity extends AppCompatActivity {
     public  static  String user = null;

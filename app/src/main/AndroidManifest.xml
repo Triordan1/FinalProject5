@@ -12,20 +12,20 @@
         <activity android:name=".Login2Activity"></activity>
         <activity android:name=".View.AssignmentDetails"></activity>
         <activity
-            android:name=".EditUserActivity"
+            android:name=".View.EditUserActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Create_Assignment" />
+        <activity android:name=".View.Create_Assignment" />
         <activity android:name=".View.CourseView" />
         <activity
             android:name=".UserActivity"
             android:label="@string/title_text"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Create_Class"
+            android:name=".View.Create_Class"
             android:label="@string/title_activity_create__class"
             android:theme="@style/AppTheme" />
-        <activity android:name=".CreateAccountInfo" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".View.CreateAccountInfo" />
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".View.LoginActivity"
             android:label="finalproject5">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

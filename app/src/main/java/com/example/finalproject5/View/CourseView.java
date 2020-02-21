@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.finalproject5.Controller.CourseViewAdapter;
-import com.example.finalproject5.Create_Assignment;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;

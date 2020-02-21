@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -10,14 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Assignment.Assignment;
 import com.example.finalproject5.Model.Assignment.AssignmentDao;
-import com.example.finalproject5.Model.Category.Category;
-import com.example.finalproject5.Model.Category.CategoryDao;
-import com.example.finalproject5.View.CourseView;
+import com.example.finalproject5.R;
 
 public class Create_Assignment extends AppCompatActivity {
     EditText AssName;

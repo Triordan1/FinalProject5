@@ -23,6 +23,9 @@ import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
+import com.example.finalproject5.View.Create_Class;
+import com.example.finalproject5.View.EditUserActivity;
+import com.example.finalproject5.View.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -212,6 +215,16 @@ public class UserActivity extends AppCompatActivity {
             ItemModel tempItem = listItems.get(position);
             tempUsername = tempItem.getUsername();
             tempInstructor = tempItem.getClassInstructor();
+
+            assignObj = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,AppDatabase.dbName)
+                    .allowMainThreadQueries()
+                    .build()
+                    .assignmentDao();
+
+            catObj = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,AppDatabase.dbName)
+                    .allowMainThreadQueries()
+                    .build()
+                    .categoryDao();
 
             //Return Course ID, Note* in the event of duplicates, it will remove
             Course tempCourse = courseObj.getCourseUI(tempUsername, tempInstructor);

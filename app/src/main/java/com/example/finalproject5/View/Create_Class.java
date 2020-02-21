@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import com.example.finalproject5.Model.AppDatabase;
 import com.example.finalproject5.Model.Course.Course;
 import com.example.finalproject5.Model.Course.CourseDao;
+import com.example.finalproject5.R;
+import com.example.finalproject5.UserActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -80,7 +83,7 @@ public class Create_Class extends AppCompatActivity {
     }
     public void goBack()
     {
-        Intent intent = new Intent(Create_Class.this,UserActivity.class);
+        Intent intent = new Intent(Create_Class.this, UserActivity.class);
         intent.putExtra("LoggedInUser",currentUser);
         startActivity(intent);
     }

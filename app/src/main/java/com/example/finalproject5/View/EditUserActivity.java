@@ -1,4 +1,4 @@
-package com.example.finalproject5;
+package com.example.finalproject5.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ import com.example.finalproject5.Model.Course.CourseDao;
 import com.example.finalproject5.Model.Enrollment.EnrollmentDao;
 import com.example.finalproject5.Model.User.User;
 import com.example.finalproject5.Model.User.UserDao;
+import com.example.finalproject5.R;
+import com.example.finalproject5.UserActivity;
 
 /**
  * The EditUserActivity class will edit user info such as username and first name
