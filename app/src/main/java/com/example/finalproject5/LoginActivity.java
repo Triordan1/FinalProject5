@@ -1,6 +1,7 @@
 package com.example.finalproject5;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,11 +26,14 @@ public class LoginActivity extends AppCompatActivity {
         user=null;
         Log.d("login", "oncreate");
         super.onCreate(savedInstanceState);
+        final MediaPlayer sound = MediaPlayer.create(this, R.raw.moose);
+        final MediaPlayer sound2 = MediaPlayer.create(this, R.raw.bruh);
         setContentView(R.layout.activity_login);
         Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 EditText usern = findViewById(R.id.username);
                 EditText passw = findViewById(R.id.password);
                 String username = usern.getText().toString();
@@ -39,10 +43,12 @@ public class LoginActivity extends AppCompatActivity {
                     UserDao dao = AppDatabase.getAppDatabase(LoginActivity.this).dao();
                     User user = dao.login(username, password);
                     if (user == null) {
+                        sound2.start();
                         // user not found
                         TextView msg = findViewById(R.id.message);
                         msg.setText("Username or Password is incorrect");
                     } else {
+                        sound.start();
                         MainActivity.user= username;
                         //inform user login was a success
                         Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_LONG).show();

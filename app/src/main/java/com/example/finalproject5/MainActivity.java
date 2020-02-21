@@ -1,6 +1,7 @@
 package com.example.finalproject5;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity","onCreate called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         tvMain = findViewById(R.id.welcome);
 
@@ -88,14 +90,13 @@ public class MainActivity extends AppCompatActivity {
 //        assignObj.insert(new Assignment("Test1","details", 100.00, 50.00, "1/1", "12/1", 4, "Tests", "UserKelly"));
 //        assignObj.insert(new Assignment("Quiz1","details", 100.00, 90.00, "1/1", "12/1", 4, "Quizzes", "UserKelly"));
 //        assignObj.insert(new Assignment("HW1","details", 100.00, 100.00, "1/1", "12/1", 4, "Homework", "UserKelly"));
-
-
-
+        final MediaPlayer sound = MediaPlayer.create(this, R.raw.ea);
         AppDatabase.getAppDatabase(MainActivity.this).loadData(this);
         Button create_account_button = findViewById(R.id.create_account);
         create_account_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sound.start();
                 Log.d("Main","onclick for create account called");
                 Intent intent = new Intent(MainActivity.this, CreateAccountInfo.class);
                 startActivity(intent);
